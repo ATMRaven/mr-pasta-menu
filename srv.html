@@ -30,7 +30,7 @@
       }
       const $=s=>document.querySelector(s); const esc=v=>String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
       const money=v=>`${Number(v||0).toLocaleString('fr-FR')} DA`;
-      let menu=new Map(),orders=load(),scanner=null,mediaStream=null;
+      let menu=new Map(),orders=load(),scanner=null,mediaStream=null,scanTimer=null;
       function load(){try{const v=JSON.parse(localStorage.getItem('mrp-orders')||'[]');return Array.isArray(v)?v:[]}catch{return[]}}
       function save(){localStorage.setItem('mrp-orders',JSON.stringify(orders));render()}
       function toast(msg,type=''){const n=document.createElement('div');n.className='toast '+type;n.textContent=msg;$('#toasts').append(n);setTimeout(()=>n.remove(),3200)}
@@ -45,51 +45,51 @@
         $('#scannerModal').classList.add('open');
         $('#scannerModal').setAttribute('aria-hidden','false');
         
-        const videoEl = $('#video');
         stopCameraStream();
+        const videoEl = $('#video');
 
         try {
-          // Initialize QrScanner with environment camera preference
-          scanner = new QrScanner(videoEl, result => {
-            closeScanner();
-            process(result.data);
-          }, {
-            highlightScanRegion: true,
-            highlightCodeOutline: true,
-            preferredCamera: 'environment',
-            maxScansPerSecond: 10,
-            calculateScanRegion: v => ({ x: 0, y: 0, width: v.videoWidth || 640, height: v.videoHeight || 480, downSampleFactor: 1 })
-          });
-
-          await scanner.start();
-        } catch(e) {
-          console.warn('QrScanner direct start error, trying getUserMedia fallback:', e);
+          // Native HTML5 MediaStream initialization
           try {
-            // Native MediaStream fallback for browsers where QrScanner start is black
             mediaStream = await navigator.mediaDevices.getUserMedia({
-              video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } }
+              video: { facingMode: { ideal: 'environment' } },
+              audio: false
             });
-            videoEl.srcObject = mediaStream;
-            await videoEl.play();
-
-            scanner = new QrScanner(videoEl, result => {
-              closeScanner();
-              process(result.data);
-            }, {
-              highlightScanRegion: true,
-              highlightCodeOutline: true,
-              maxScansPerSecond: 10
-            });
-            await scanner.start();
-          } catch (err2) {
-            closeScanner();
-            console.error('Camera fallback error:', err2);
-            toast("Accès caméra impossible: " + (err2.message || err2),'error');
+          } catch (_) {
+            mediaStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
           }
+
+          videoEl.srcObject = mediaStream;
+          videoEl.setAttribute('playsinline', 'true');
+          videoEl.setAttribute('autoplay', 'true');
+          videoEl.setAttribute('muted', 'true');
+          
+          await videoEl.play();
+
+          // QrScanner continuous frame decoding
+          scanTimer = setInterval(async () => {
+            if (!videoEl || videoEl.paused || videoEl.ended || !videoEl.videoWidth) return;
+            try {
+              const res = await QrScanner.scanImage(videoEl, { returnDetailedScanResult: true });
+              if (res && res.data) {
+                closeScanner();
+                process(res.data);
+              }
+            } catch (_) {}
+          }, 200);
+
+        } catch(e) {
+          closeScanner();
+          console.error(e);
+          toast("Accès caméra impossible: " + (e.message || e),'error');
         }
       }
 
       function stopCameraStream(){
+        if (scanTimer) {
+          clearInterval(scanTimer);
+          scanTimer = null;
+        }
         if (scanner) {
           try { scanner.stop(); scanner.destroy(); } catch (_) {}
           scanner = null;
