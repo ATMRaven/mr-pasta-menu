@@ -1,19 +1,8 @@
-(() => {
+(function () {
   'use strict';
 
-  const TOKEN_KEY = 'mrp_admin_token';
-  const USER_KEY = 'mrp_admin_user';
-
-  const state = {
-    token: localStorage.getItem(TOKEN_KEY) || null,
-    user: localStorage.getItem(USER_KEY) || null,
-    dishes: [],
-    restaurant: {},
-    activeTab: 'dishesTab',
-    searchQuery: '',
-    categoryFilter: 'all',
-    editingDishId: null
-  };
+  const TOKEN_KEY = 'mr_pasta_admin_token';
+  const USER_KEY = 'mr_pasta_admin_user';
 
   const CATEGORY_NAMES = {
     'entrees-froides': 'Entrées froides',
@@ -30,42 +19,48 @@
     'jus-desserts': 'Jus & desserts'
   };
 
-  // DOM Elements
+  const state = {
+    token: localStorage.getItem(TOKEN_KEY) || null,
+    user: localStorage.getItem(USER_KEY) || null,
+    dishes: [],
+    restaurant: {},
+    searchQuery: '',
+    categoryFilter: 'all',
+    currentEditingDishId: null
+  };
+
+  // DOM Elements Cache
   const els = {
-    loginSection: document.getElementById('loginSection'),
-    dashboardSection: document.getElementById('dashboardSection'),
-    topNav: document.getElementById('topNav'),
-    adminUsername: document.getElementById('adminUsername'),
+    loginView: document.getElementById('loginView'),
+    dashboardView: document.getElementById('dashboardView'),
     loginForm: document.getElementById('loginForm'),
     loginUsername: document.getElementById('loginUsername'),
     loginPassword: document.getElementById('loginPassword'),
     loginError: document.getElementById('loginError'),
     logoutBtn: document.getElementById('logoutBtn'),
-    
+    adminUsername: document.getElementById('adminUsername'),
+
     // Stats
     statTotalDishes: document.getElementById('statTotalDishes'),
     statActiveDishes: document.getElementById('statActiveDishes'),
     statDisabledDishes: document.getElementById('statDisabledDishes'),
-    
+
     // Tabs
     tabBtns: document.querySelectorAll('.tab-btn'),
     tabContents: document.querySelectorAll('.tab-content'),
-    
-    // Dishes Table
+
+    // Dish List & Toolbar
     dishSearch: document.getElementById('dishSearch'),
     dishCategoryFilter: document.getElementById('dishCategoryFilter'),
     addDishBtn: document.getElementById('addDishBtn'),
     dishesTableBody: document.getElementById('dishesTableBody'),
-    
+
     // Dish Modal
     dishModal: document.getElementById('dishModal'),
-    dishModalTitle: document.getElementById('dishModalTitle'),
-    closeDishModal: document.getElementById('closeDishModal'),
-    cancelDishModal: document.getElementById('cancelDishModal'),
+    modalTitle: document.getElementById('modalTitle'),
     dishForm: document.getElementById('dishForm'),
-    dishId: document.getElementById('dishId'),
+    dishIdInput: document.getElementById('dishIdInput'),
     dishCategory: document.getElementById('dishCategory'),
-    dishGroup: document.getElementById('dishGroup'),
     dishNameFr: document.getElementById('dishNameFr'),
     dishNameAr: document.getElementById('dishNameAr'),
     dishDescFr: document.getElementById('dishDescFr'),
@@ -77,28 +72,39 @@
     openGalleryBtn: document.getElementById('openGalleryBtn'),
     imageFileInput: document.getElementById('imageFileInput'),
     uploadStatusText: document.getElementById('uploadStatusText'),
-    dishAvailable: document.getElementById('dishAvailable'),
-    dishSortOrder: document.getElementById('dishSortOrder'),
-    sizesContainer: document.getElementById('sizesContainer'),
+    sizesList: document.getElementById('sizesList'),
     addSizeBtn: document.getElementById('addSizeBtn'),
+    closeDishModal: document.getElementById('closeDishModal'),
+    cancelDishModal: document.getElementById('cancelDishModal'),
 
     // Gallery Modal
     galleryModal: document.getElementById('galleryModal'),
-    closeGalleryModal: document.getElementById('closeGalleryModal'),
-    cancelGalleryModal: document.getElementById('cancelGalleryModal'),
     galleryGrid: document.getElementById('galleryGrid'),
     galleryUploadBtn: document.getElementById('galleryUploadBtn'),
-    
-    // Forms
+    closeGalleryModal: document.getElementById('closeGalleryModal'),
+    cancelGalleryModal: document.getElementById('cancelGalleryModal'),
+
+    // Restaurant Info Form
     restaurantForm: document.getElementById('restaurantForm'),
+    restPhone: document.getElementById('restPhone'),
+    restPhone2: document.getElementById('restPhone2'),
+    restAddress: document.getElementById('restAddress'),
+    restHours: document.getElementById('restHours'),
+    restInsta: document.getElementById('restInsta'),
+    restFb: document.getElementById('restFb'),
+    restIsOpen: document.getElementById('restIsOpen'),
+
+    // Security Form
     passwordForm: document.getElementById('passwordForm'),
+    oldPassword: document.getElementById('oldPassword'),
+    newPassword: document.getElementById('newPassword'),
+    confirmPassword: document.getElementById('confirmPassword'),
     passwordError: document.getElementById('passwordError'),
     createUserForm: document.getElementById('createUserForm'),
-    newAdminUsername: document.getElementById('newAdminUsername'),
-    newAdminPassword: document.getElementById('newAdminPassword'),
+    newUsername: document.getElementById('newUsername'),
+    newUserPassword: document.getElementById('newUserPassword'),
     createUserError: document.getElementById('createUserError'),
-    createUserSuccess: document.getElementById('createUserSuccess'),
-    
+
     // Backup & Restore
     downloadBackupBtn: document.getElementById('downloadBackupBtn'),
     triggerRestoreBtn: document.getElementById('triggerRestoreBtn'),
@@ -106,87 +112,6 @@
     restoreStatusText: document.getElementById('restoreStatusText')
   };
 
-  async function downloadBackup() {
-    try {
-      const res = await apiFetch('/api/admin/backup');
-      const blob = await res.blob();
-      const filename = `mr-pasta-backup-${new Date().toISOString().slice(0, 10)}.json`;
-      
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = filename;
-      link.click();
-      URL.revokeObjectURL(link.href);
-    } catch (err) {
-      alert(`Erreur téléchargement sauvegarde: ${err.message}`);
-    }
-  }
-
-  async function restoreBackup(file) {
-    if (!file) return;
-    if (!confirm(`⚠️ ATTENTION :\n\nCette action va remplacer TOUTES les données de la base (plats, tarifs, infos du restaurant) par celles du fichier de sauvegarde "${file.name}".\n\nVoulez-vous vraiment effectuer cette restauration d'urgence ?`)) {
-      els.restoreFileInput.value = '';
-      return;
-    }
-
-    els.restoreStatusText.style.display = 'block';
-    els.restoreStatusText.textContent = '⏳ Restauration de la base de données en cours…';
-    els.restoreStatusText.style.color = 'var(--accent-gold)';
-
-    try {
-      const text = await file.text();
-      const payload = JSON.parse(text);
-
-      const res = await apiFetch('/api/admin/restore', {
-        method: 'POST',
-        body: payload
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        els.restoreStatusText.textContent = `✅ ${data.message}`;
-        els.restoreStatusText.style.color = 'var(--accent)';
-        await Promise.all([loadDishes(), loadRestaurantInfo()]);
-      } else {
-        throw new Error(data.error || 'Erreur lors de la restauration');
-      }
-    } catch (err) {
-      els.restoreStatusText.textContent = `❌ ${err.message}`;
-      els.restoreStatusText.style.color = 'var(--danger)';
-    } finally {
-      els.restoreFileInput.value = '';
-    }
-  }
-
-  async function createAdminUser(e) {
-    e.preventDefault();
-    els.createUserError.style.display = 'none';
-    els.createUserSuccess.style.display = 'none';
-
-    const username = els.newAdminUsername.value.trim();
-    const password = els.newAdminPassword.value;
-
-    try {
-      const res = await apiFetch('/api/admin/users', {
-        method: 'POST',
-        body: { username, password }
-      });
-      const data = await res.json();
-      if (res.ok) {
-        els.createUserSuccess.textContent = `✅ Compte administrateur '${username}' créé avec succès !`;
-        els.createUserSuccess.style.display = 'block';
-        els.createUserForm.reset();
-      } else {
-        els.createUserError.textContent = data.error || 'Erreur de création de compte';
-        els.createUserError.style.display = 'block';
-      }
-    } catch (err) {
-      els.createUserError.textContent = err.message;
-      els.createUserError.style.display = 'block';
-    }
-  }
-
-  // --- Upload & Gallery Functions ---
   async function handleFileUpload(file) {
     if (!file) return;
     els.uploadStatusText.textContent = '⏳ Téléversement en cours…';
@@ -303,9 +228,8 @@
     state.user = null;
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
-    els.loginSection.style.display = 'block';
-    els.dashboardSection.style.display = 'none';
-    els.topNav.style.display = 'none';
+    els.dashboardView.style.display = 'none';
+    els.loginView.style.display = 'flex';
   }
 
   async function checkAuth() {
@@ -314,7 +238,7 @@
       return;
     }
     try {
-      const res = await apiFetch('/api/admin/me');
+      const res = await apiFetch('/api/admin/verify');
       if (res.ok) {
         initDashboard();
       } else {
@@ -327,15 +251,17 @@
 
   // --- Dashboard Init ---
   async function initDashboard() {
-    els.loginSection.style.display = 'none';
-    els.dashboardSection.style.display = 'block';
-    els.topNav.style.display = 'flex';
-    els.adminUsername.textContent = `👤 ${state.user}`;
+    els.loginView.style.display = 'none';
+    els.dashboardView.style.display = 'block';
+    els.adminUsername.textContent = state.user;
 
-    await Promise.all([loadDishes(), loadRestaurantInfo()]);
+    await Promise.all([
+      loadDishes(),
+      loadRestaurantInfo()
+    ]);
   }
 
-  // --- Load & Render Dishes ---
+  // --- Dishes Management ---
   async function loadDishes() {
     try {
       const res = await apiFetch('/api/admin/dishes');
@@ -465,10 +391,7 @@
 
   // --- Delete Dish ---
   async function deleteDish(id) {
-    const dish = state.dishes.find(d => d.id === Number(id));
-    if (!dish) return;
-    if (!confirm(`Voulez-vous vraiment supprimer le plat "${dish.name}" ?`)) return;
-
+    if (!confirm('Voulez-vous vraiment supprimer ce plat ?')) return;
     try {
       const res = await apiFetch(`/api/admin/dishes/${id}`, { method: 'DELETE' });
       if (res.ok) {
@@ -476,176 +399,270 @@
         updateStats();
         renderDishesTable();
       } else {
-        alert('Erreur lors de la suppression');
+        alert('Erreur suppression plat');
       }
     } catch (err) {
       alert(err.message);
     }
   }
 
-  // --- Dish Modal (Create & Edit) ---
+  // --- Dish Modal & Form ---
   function openDishModal(dish = null) {
-    state.editingDishId = dish ? dish.id : null;
-    els.dishModalTitle.textContent = dish ? `Modifier : ${dish.name}` : 'Ajouter un nouveau Plat';
+    els.uploadStatusText.textContent = '';
+    if (dish) {
+      state.currentEditingDishId = dish.id;
+      els.modalTitle.textContent = '✏️ Modifier le Plat';
+      els.dishIdInput.value = dish.id;
+      els.dishCategory.value = dish.category;
+      els.dishNameFr.value = dish.name || '';
+      els.dishNameAr.value = dish.nameAr || '';
+      els.dishDescFr.value = dish.desc || '';
+      els.dishDescAr.value = dish.descAr || '';
+      els.dishPrice.value = dish.price || 0;
+      els.dishImage.value = dish.image || '';
+      els.dishImagePreview.src = dish.image || 'assets/dish-placeholder.svg';
 
-    els.dishId.value = dish ? dish.id : '';
-    els.dishCategory.value = dish ? dish.category : 'pasta';
-    els.dishGroup.value = dish ? (dish.group || '') : '';
-    els.dishNameFr.value = dish ? dish.name : '';
-    els.dishNameAr.value = dish ? (dish.nameAr || '') : '';
-    els.dishDescFr.value = dish ? (dish.desc || '') : '';
-    els.dishDescAr.value = dish ? (dish.descAr || '') : '';
-    els.dishPrice.value = dish ? dish.price : '';
-    els.dishImage.value = dish ? (dish.image || '') : '';
-    els.dishImagePreview.src = dish ? (dish.image || 'assets/dish-placeholder.svg') : 'assets/dish-placeholder.svg';
-    els.uploadStatusText.textContent = dish ? 'Image actuelle' : 'Aperçu de l\'image';
-    els.uploadStatusText.style.color = 'var(--text-muted)';
-    els.dishAvailable.checked = dish ? dish.available : true;
-    els.dishSortOrder.value = dish ? (dish.sortOrder || 1) : (state.dishes.length + 1);
-
-    // Sizes
-    els.sizesContainer.innerHTML = '';
-    if (dish && dish.sizes && dish.sizes.length) {
-      dish.sizes.forEach(size => addSizeRow(size.name, size.price));
+      renderSizesList(dish.sizes || []);
+    } else {
+      state.currentEditingDishId = null;
+      els.modalTitle.textContent = '➕ Ajouter un Nouveau Plat';
+      els.dishForm.reset();
+      els.dishIdInput.value = '';
+      els.dishImagePreview.src = 'assets/dish-placeholder.svg';
+      renderSizesList([]);
     }
-
     els.dishModal.classList.add('active');
   }
 
   function closeDishModal() {
     els.dishModal.classList.remove('active');
-    state.editingDishId = null;
   }
 
-  function addSizeRow(name = '', price = '') {
-    const div = document.createElement('div');
-    div.className = 'size-row grid-2';
-    div.style.alignItems = 'center';
-    div.innerHTML = `
-      <input type="text" class="form-control size-name" placeholder="Nom taille (ex. Moyenne)" value="${escapeHtml(name)}">
-      <div style="display: flex; gap: 0.5rem;">
-        <input type="number" class="form-control size-price" placeholder="Prix (DA)" value="${price}">
-        <button type="button" class="btn btn-danger btn-sm remove-size-btn">&times;</button>
+  function renderSizesList(sizes = []) {
+    els.sizesList.innerHTML = sizes.map((size, index) => `
+      <div class="size-row" style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
+        <input type="text" class="form-control size-name" placeholder="Nom taille (ex: Moyenne)" value="${escapeHtml(size.name || '')}" style="flex: 2;">
+        <input type="number" class="form-control size-price" placeholder="Prix DA" value="${size.price || 0}" style="flex: 1;">
+        <button type="button" class="btn btn-danger btn-sm remove-size-btn" style="padding: 0.35rem 0.6rem;">✕</button>
       </div>
+    `).join('');
+
+    els.sizesList.querySelectorAll('.remove-size-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => e.target.closest('.size-row').remove());
+    });
+  }
+
+  function addSizeRow() {
+    const div = document.createElement('div');
+    div.className = 'size-row';
+    div.style.cssText = 'display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;';
+    div.innerHTML = `
+      <input type="text" class="form-control size-name" placeholder="Nom taille (ex: Grande)" style="flex: 2;">
+      <input type="number" class="form-control size-price" placeholder="Prix DA" style="flex: 1;">
+      <button type="button" class="btn btn-danger btn-sm remove-size-btn" style="padding: 0.35rem 0.6rem;">✕</button>
     `;
     div.querySelector('.remove-size-btn').addEventListener('click', () => div.remove());
-    els.sizesContainer.appendChild(div);
+    els.sizesList.appendChild(div);
   }
 
-  async function saveDish(e) {
-    e.preventDefault();
-
-    // Parse sizes
-    const sizeRows = els.sizesContainer.querySelectorAll('.size-row');
+  function collectSizesFromForm() {
+    const rows = els.sizesList.querySelectorAll('.size-row');
     const sizes = [];
-    sizeRows.forEach(row => {
+    rows.forEach(row => {
       const name = row.querySelector('.size-name').value.trim();
       const price = Number(row.querySelector('.size-price').value);
       if (name && !isNaN(price)) {
         sizes.push({ name, price });
       }
     });
+    return sizes.length ? sizes : null;
+  }
 
+  async function saveDish(e) {
+    e.preventDefault();
     const payload = {
       category: els.dishCategory.value,
-      group: els.dishGroup.value.trim() || els.dishCategory.value,
       name: els.dishNameFr.value.trim(),
       nameAr: els.dishNameAr.value.trim(),
       desc: els.dishDescFr.value.trim(),
       descAr: els.dishDescAr.value.trim(),
       price: Number(els.dishPrice.value),
-      sizes: sizes.length ? sizes : null,
-      image: els.dishImage.value.trim() || 'assets/dish-placeholder.svg',
-      available: els.dishAvailable.checked,
-      sortOrder: Number(els.dishSortOrder.value) || 999
+      image: els.dishImage.value.trim(),
+      sizes: collectSizesFromForm()
     };
 
     try {
-      const isEdit = Boolean(state.editingDishId);
-      const url = isEdit ? `/api/admin/dishes/${state.editingDishId}` : '/api/admin/dishes';
-      const method = isEdit ? 'PUT' : 'POST';
+      let res;
+      if (state.currentEditingDishId) {
+        res = await apiFetch(`/api/admin/dishes/${state.currentEditingDishId}`, {
+          method: 'PUT',
+          body: payload
+        });
+      } else {
+        res = await apiFetch('/api/admin/dishes', {
+          method: 'POST',
+          body: payload
+        });
+      }
 
-      const res = await apiFetch(url, { method, body: payload });
       if (res.ok) {
         closeDishModal();
         await loadDishes();
       } else {
         const data = await res.json();
-        alert(data.error || 'Erreur lors de l\'enregistrement');
+        alert(`Erreur: ${data.error || 'Sauvegarde échouée'}`);
       }
     } catch (err) {
       alert(err.message);
     }
   }
 
-  // --- Load & Save Restaurant Info ---
+  // --- Restaurant Info ---
   async function loadRestaurantInfo() {
     try {
       const res = await fetch('/api/restaurant');
       state.restaurant = await res.json();
-      
-      document.getElementById('restName').value = state.restaurant.name || '';
-      document.getElementById('restNameAr').value = state.restaurant.nameAr || '';
-      document.getElementById('restTagline').value = state.restaurant.tagline || '';
-      document.getElementById('restTaglineAr').value = state.restaurant.taglineAr || '';
-      document.getElementById('restPhoneDisplay').value = state.restaurant.phoneDisplay || '';
-      document.getElementById('restPhoneInt').value = state.restaurant.phoneInternational || '';
-      document.getElementById('restAddress').value = state.restaurant.address || '';
-      document.getElementById('restAddressAr').value = state.restaurant.addressAr || '';
-      document.getElementById('restOpens').value = state.restaurant.hours?.opens || '11:30';
-      document.getElementById('restCloses').value = state.restaurant.hours?.closes || '23:00';
-      document.getElementById('restMapsUrl').value = state.restaurant.mapsUrl || '';
-      document.getElementById('restInstagram').value = state.restaurant.social?.instagram || '';
-      document.getElementById('restFacebook').value = state.restaurant.social?.facebook || '';
+
+      els.restPhone.value = state.restaurant.phone || '';
+      els.restPhone2.value = state.restaurant.phone2 || '';
+      els.restAddress.value = state.restaurant.address || '';
+      els.restHours.value = state.restaurant.hours || '';
+      els.restInsta.value = state.restaurant.instagram || '';
+      els.restFb.value = state.restaurant.facebook || '';
+      els.restIsOpen.checked = Boolean(state.restaurant.isOpen);
     } catch (err) {
-      console.error('Erreur chargement restaurant info', err);
+      console.error('Erreur info restaurant', err);
     }
   }
 
   async function saveRestaurantInfo(e) {
     e.preventDefault();
     const payload = {
-      name: document.getElementById('restName').value.trim(),
-      nameAr: document.getElementById('restNameAr').value.trim(),
-      tagline: document.getElementById('restTagline').value.trim(),
-      taglineAr: document.getElementById('restTaglineAr').value.trim(),
-      phoneDisplay: document.getElementById('restPhoneDisplay').value.trim(),
-      phoneInternational: document.getElementById('restPhoneInt').value.trim(),
-      address: document.getElementById('restAddress').value.trim(),
-      addressAr: document.getElementById('restAddressAr').value.trim(),
-      hours: {
-        opens: document.getElementById('restOpens').value.trim(),
-        closes: document.getElementById('restCloses').value.trim(),
-        days: 'Tous les jours',
-        daysAr: 'كل أيام الأسبوع'
-      },
-      mapsUrl: document.getElementById('restMapsUrl').value.trim(),
-      social: {
-        instagram: document.getElementById('restInstagram').value.trim(),
-        facebook: document.getElementById('restFacebook').value.trim()
-      }
+      phone: els.restPhone.value.trim(),
+      phone2: els.restPhone2.value.trim(),
+      address: els.restAddress.value.trim(),
+      hours: els.restHours.value.trim(),
+      instagram: els.restInsta.value.trim(),
+      facebook: els.restFb.value.trim(),
+      isOpen: els.restIsOpen.checked
     };
 
     try {
-      const res = await apiFetch('/api/admin/restaurant', { method: 'PUT', body: payload });
+      const res = await apiFetch('/api/admin/restaurant', {
+        method: 'PUT',
+        body: payload
+      });
       if (res.ok) {
-        alert('Informations du restaurant mises à jour avec succès !');
+        alert('Informations du restaurant sauvegardées avec succès !');
       } else {
-        alert('Erreur lors de la mise à jour');
+        alert('Erreur lors de la sauvegarde');
       }
     } catch (err) {
       alert(err.message);
     }
   }
 
-  // --- Change Password ---
+  // --- Admin User Creation ---
+  async function createAdminUser(e) {
+    e.preventDefault();
+    els.createUserError.style.display = 'none';
+
+    const username = els.newUsername.value.trim();
+    const password = els.newUserPassword.value;
+
+    if (!username || !password) {
+      els.createUserError.textContent = 'Veuillez remplir tous les champs.';
+      els.createUserError.style.display = 'block';
+      return;
+    }
+
+    try {
+      const res = await apiFetch('/api/admin/users', {
+        method: 'POST',
+        body: { username, password }
+      });
+      const data = await res.json();
+      if (res.ok) {
+        alert(`L'utilisateur admin "${username}" a été créé avec succès !`);
+        els.createUserForm.reset();
+      } else {
+        els.createUserError.textContent = data.error || 'Erreur lors de la création';
+        els.createUserError.style.display = 'block';
+      }
+    } catch (err) {
+      els.createUserError.textContent = err.message;
+      els.createUserError.style.display = 'block';
+    }
+  }
+
+  // --- Backup & Restore ---
+  async function downloadBackup() {
+    try {
+      const res = await apiFetch('/api/admin/backup');
+      if (!res.ok) throw new Error('Échec du téléchargement du backup');
+      const backupData = await res.json();
+
+      const jsonStr = JSON.stringify(backupData, null, 2);
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+
+      const dateStr = new Date().toISOString().slice(0, 10);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `mr-pasta-backup-${dateStr}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      alert(`Erreur backup: ${err.message}`);
+    }
+  }
+
+  async function restoreBackup(file) {
+    if (!file) return;
+    if (!confirm('⚠️ ATTENTION : La restauration remplacera entièrement les données actuelles de la base. Voulez-vous continuer ?')) {
+      els.restoreFileInput.value = '';
+      return;
+    }
+
+    els.restoreStatusText.textContent = '⏳ Restauration en cours…';
+    els.restoreStatusText.style.color = 'var(--accent-gold)';
+
+    try {
+      const text = await file.text();
+      const backupPayload = JSON.parse(text);
+
+      const res = await apiFetch('/api/admin/restore', {
+        method: 'POST',
+        body: backupPayload
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        els.restoreStatusText.textContent = `✅ Restauration réussie ! (${data.dishesCount} plats restaurés)`;
+        els.restoreStatusText.style.color = 'var(--accent)';
+        await loadDishes();
+        await loadRestaurantInfo();
+      } else {
+        throw new Error(data.error || 'Échec de la restauration');
+      }
+    } catch (err) {
+      els.restoreStatusText.textContent = `❌ Erreur restauration: ${err.message}`;
+      els.restoreStatusText.style.color = 'var(--danger)';
+    } finally {
+      els.restoreFileInput.value = '';
+    }
+  }
+
+  // --- Password Change ---
   async function changePassword(e) {
     e.preventDefault();
     els.passwordError.style.display = 'none';
 
-    const oldPassword = document.getElementById('oldPassword').value;
-    const newPassword = document.getElementById('newPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
+    const oldPassword = els.oldPassword.value;
+    const newPassword = els.newPassword.value;
+    const confirmPassword = els.confirmPassword.value;
 
     if (newPassword !== confirmPassword) {
       els.passwordError.textContent = 'Les nouveaux mots de passe ne correspondent pas.';
