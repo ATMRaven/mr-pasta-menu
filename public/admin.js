@@ -370,6 +370,10 @@
 
     if (!filtered.length) {
       els.dishesTableBody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">Aucun plat ne correspond aux critères.</td></tr>`;
+      const mobileCardsEl = document.getElementById('dishesMobileCards');
+      if (mobileCardsEl) {
+        mobileCardsEl.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;">Aucun plat ne correspond aux critères.</div>`;
+      }
       return;
     }
 
@@ -377,7 +381,7 @@
       const categoryLabel = CATEGORY_NAMES[dish.category] || dish.category;
       let priceLabel = `${Number(dish.price).toLocaleString('fr-FR')} DA`;
       if (dish.sizes && dish.sizes.length) {
-        priceLabel = `Dès ${Math.min(...dish.sizes.map(s => Number(s.price))).toLocaleString('fr-FR')} DA (${dish.sizes.length} tailles)`;
+        priceLabel = `Dès ${Math.min(...dish.sizes.map(s => Number(s.price))).toLocaleString('fr-FR')} DA (${dish.sizes.length} t.)`;
       }
 
       return `<tr>
@@ -402,6 +406,44 @@
         </td>
       </tr>`;
     }).join('');
+
+    const mobileCardsEl = document.getElementById('dishesMobileCards');
+    if (mobileCardsEl) {
+      mobileCardsEl.innerHTML = filtered.map(dish => {
+        const categoryLabel = CATEGORY_NAMES[dish.category] || dish.category;
+        let priceLabel = `${Number(dish.price).toLocaleString('fr-FR')} DA`;
+        if (dish.sizes && dish.sizes.length) {
+          priceLabel = `Dès ${Math.min(...dish.sizes.map(s => Number(s.price))).toLocaleString('fr-FR')} DA`;
+        }
+
+        return `
+          <div class="mobile-dish-card">
+            <div class="mobile-dish-header">
+              <img src="${dish.image || 'assets/dish-placeholder.svg'}" class="mobile-dish-img" alt="${dish.name}" onerror="this.src='assets/dish-placeholder.svg'">
+              <div class="mobile-dish-info">
+                <div class="mobile-dish-title">${escapeHtml(dish.name)}</div>
+                <div class="mobile-dish-ar">${escapeHtml(dish.nameAr || '')}</div>
+                <span class="badge badge-success mobile-dish-cat">${escapeHtml(categoryLabel)}</span>
+              </div>
+            </div>
+            <div class="mobile-dish-meta">
+              <div class="mobile-dish-price">${priceLabel}</div>
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="font-size:0.78rem; color:var(--text-muted);">${dish.available ? 'En stock' : 'Masqué'}</span>
+                <label class="switch">
+                  <input type="checkbox" ${dish.available ? 'checked' : ''} data-toggle-id="${dish.id}">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div class="mobile-dish-actions">
+              <button class="btn btn-secondary btn-sm" data-edit-id="${dish.id}">✏️ Modifier</button>
+              <button class="btn btn-danger btn-sm" data-delete-id="${dish.id}">🗑️ Supprimer</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
   }
 
   // --- Toggle Availability ---

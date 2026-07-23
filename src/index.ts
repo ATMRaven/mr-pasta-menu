@@ -134,6 +134,12 @@ app.get('/admin', async (c) => {
   return (c.env as any).ASSETS.fetch(new Request(url.toString(), c.req.raw));
 });
 
+app.get('/srv', async (c) => {
+  const url = new URL(c.req.url);
+  url.pathname = '/srv.html';
+  return (c.env as any).ASSETS.fetch(new Request(url.toString(), c.req.raw));
+});
+
 app.get('/index', (c) => c.redirect('/', 301));
 
 // Helper to trigger live update version bump

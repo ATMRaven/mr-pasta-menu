@@ -523,20 +523,93 @@ input:checked + .slider:before {
     justify-content: center;
   }
 
-  /* Table styling for mobile phone touch screens */
-  .dish-table th:nth-child(3),
-  .dish-table td:nth-child(3) {
-    display: none; /* Hide category column on mobile to give space for Dish & Price */
+  /* Mobile Card View Styling */
+  .desktop-table-view {
+    display: none !important;
   }
 
-  .dish-table th, .dish-table td {
-    padding: 0.65rem 0.4rem;
+  .mobile-dishes-cards {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.85rem;
   }
 
-  .dish-table .btn-sm {
-    padding: 0.35rem 0.5rem;
-    font-size: 0.75rem;
-    min-height: 36px;
+  .mobile-dish-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mobile-dish-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .mobile-dish-img {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: #111;
+    flex-shrink: 0;
+  }
+
+  .mobile-dish-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .mobile-dish-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-dish-ar {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    direction: rtl;
+  }
+
+  .mobile-dish-cat {
+    margin-top: 0.25rem;
+    font-size: 0.7rem;
+  }
+
+  .mobile-dish-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .mobile-dish-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .mobile-dish-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+  }
+
+  .mobile-dish-actions .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.82rem;
+    min-height: 40px;
   }
 
   /* Fullscreen Modal Sheet on Mobile */
@@ -552,4 +625,8 @@ input:checked + .slider:before {
     border-bottom: none;
     padding: 1.25rem 1rem;
   }
+}
+
+.mobile-dishes-cards {
+  display: none;
 }
