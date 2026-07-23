@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="fr" dir="ltr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0a1911">
+  <meta name="description" content="Découvrez le menu digital officiel de Mr Pasta à Sétif : pasta, pizzas, grillades, desserts et plus.">
+  <meta name="format-detection" content="telephone=yes">
+  <meta property="og:title" content="Mr Pasta — Menu digital">
+  <meta property="og:description" content="Restaurant de gastronomie italienne à Sétif.">
+  <meta property="og:type" content="restaurant.menu">
+  <meta property="og:image" content="assets/restaurant.webp">
+  <title>Mr Pasta — Menu digital</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="preload" href="assets/restaurant.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/logo.png" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      const saved = localStorage.getItem('mrp-theme');
+      const theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    } catch (_) {}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Restaurant",
+    "name":"Mr Pasta",
+    "image":"assets/restaurant.webp",
+    "telephone":"+213556521689",
+    "email":"mrpastasetif@gmail.com",
+    "priceRange":"DZD",
+    "servesCuisine":["Italian","Pizza","Pasta","Grill"],
+    "hasMenu":"./index.html",
+    "address":{"@type":"PostalAddress","streetAddress":"Avenue du 1er Novembre","addressLocality":"Sétif","addressCountry":"DZ"},
+    "geo":{"@type":"GeoCoordinates","latitude":36.1850245,"longitude":5.4402485},
+    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"11:30","closes":"23:00"}],
+    "sameAs":["https://www.instagram.com/mrpasta19/","https://www.facebook.com/mrpasta19/"]
+  }
+  </script>
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20 8H7"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M7.2 3.5 10 8 8.2 9.8a15 15 0 0 0 6 6l1.8-1.8 4.5 2.8-1.2 3a2 2 0 0 1-2.2 1.1C9.7 19.6 4.4 14.3 3.1 6.9A2 2 0 0 1 4.2 4.7l3-1.2Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM15 14h2v2h-2zM19 14h1v3h-3v3h-3v-2M19 19h1v1h-1z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 21v-8h3l.5-3H14V8.5c0-1 .5-1.5 1.7-1.5H18V4.2c-.7-.1-1.6-.2-2.7-.2-2.7 0-4.3 1.6-4.3 4.5V10H8v3h3v8"/></symbol>
+  </svg>
+
+  <div id="loadingScreen" class="loading-screen" aria-live="polite">
+    <img src="assets/logo.png" alt="Mr Pasta" width="257" height="88">
+    <span class="loader" aria-hidden="true"></span>
+    <p>Préparation du menu…</p>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="header-inner shell">
+      <button class="icon-button" id="infoButton" type="button" aria-label="Informations du restaurant" aria-controls="infoDrawer">
+        <svg><use href="#i-menu"></use></svg>
+      </button>
+      <a class="brand" href="#top" aria-label="Mr Pasta — Accueil">
+        <img src="assets/logo.png" alt="Mr Pasta Restaurant" width="257" height="88">
+      </a>
+      <div class="header-actions">
+        <a class="header-contact desktop-only" href="tel:+213556521689">
+          <svg><use href="#i-phone"></use></svg><span>0556 52 16 89</span>
+        </a>
+        <button class="icon-button" id="themeButton" type="button" aria-label="Changer le thème">
+          <svg class="theme-moon"><use href="#i-moon"></use></svg>
+          <svg class="theme-sun"><use href="#i-sun"></use></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <img class="hero-image" src="assets/restaurant.webp" alt="Façade du restaurant Mr Pasta à Sétif" width="1200" height="700">
+      <div class="hero-overlay"></div>
+      <div class="hero-content shell">
+        <div class="hero-copy">
+          <div class="status-pill" id="openStatus"><span></span><b>Ouvert aujourd'hui</b></div>
+          <p class="eyebrow" data-i18n="eyebrow">Bienvenue chez Mr Pasta</p>
+          <h1 id="heroTitle" data-i18n="heroTitle">L’Italie au cœur de Sétif.</h1>
+          <p class="hero-text" data-i18n="heroText">Pasta, pizzas artisanales, grillades et douceurs — découvrez les 212 créations de notre carte.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#menu"><span data-i18n="viewMenu">Voir le menu</span><svg><use href="#i-arrow"></use></svg></a>
+            <a class="button glass" href="https://maps.app.goo.gl/CFT8iTQunTVEHa4A9" target="_blank" rel="noopener"><svg><use href="#i-pin"></use></svg><span data-i18n="directions">Itinéraire</span></a>
+          </div>
+        </div>
+        <div class="hero-facts" aria-label="Informations rapides">
+          <div><svg><use href="#i-clock"></use></svg><span><b data-i18n="hoursLabel">Horaires</b><small>11:30 — 23:00</small></span></div>
+          <div><svg><use href="#i-pin"></use></svg><span><b>Sétif</b><small data-i18n="addressShort">Avenue du 1er Novembre</small></span></div>
+          <div><strong id="dishCount">212</strong><span><b data-i18n="dishes">plats</b><small data-i18n="menuOfficial">Menu officiel</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu" aria-labelledby="menuTitle">
+      <div class="menu-heading shell">
+        <div>
+          <p class="eyebrow dark" data-i18n="ourMenu">Notre carte</p>
+          <h2 id="menuTitle" data-i18n="chooseDish">Qu’est-ce qui vous ferait plaisir ?</h2>
+        </div>
+        <div class="language-switch" role="group" aria-label="Langue">
+          <button type="button" class="lang-button active" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" class="lang-button" data-lang="ar" aria-pressed="false">ع</button>
+        </div>
+      </div>
+
+      <div class="menu-tools" id="menuTools">
+        <div class="shell tools-inner">
+          <label class="search-box" for="searchInput">
+            <svg><use href="#i-search"></use></svg>
+            <input id="searchInput" type="search" autocomplete="off" data-i18n-placeholder="search" placeholder="Rechercher un plat, un ingrédient…">
+            <button id="clearSearch" type="button" aria-label="Effacer la recherche" hidden><svg><use href="#i-x"></use></svg></button>
+          </label>
+          <nav class="category-nav" id="categoryNav" aria-label="Catégories du menu"></nav>
+        </div>
+      </div>
+
+      <div class="menu-body shell">
+        <div class="results-meta">
+          <p id="resultsText" aria-live="polite">212 plats</p>
+          <button type="button" id="resetFilters" class="text-button" hidden data-i18n="reset">Réinitialiser</button>
+        </div>
+        <div id="menuContent" class="menu-content" aria-busy="true"></div>
+        <div id="emptyState" class="empty-state" hidden>
+          <svg><use href="#i-search"></use></svg>
+          <h3 data-i18n="noResultsTitle">Aucun plat trouvé</h3>
+          <p data-i18n="noResultsText">Essayez un autre mot ou affichez toute la carte.</p>
+          <button type="button" class="button secondary" id="emptyReset" data-i18n="seeAll">Voir tout le menu</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="Mr Pasta Restaurant" width="257" height="88">
+        <p data-i18n="footerTagline">Restaurant de gastronomie italienne à Sétif.</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/mrpasta19/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"></use></svg></a>
+          <a href="https://www.facebook.com/mrpasta19/" target="_blank" rel="noopener" aria-label="Facebook"><svg><use href="#i-facebook"></use></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3 data-i18n="visitUs">Nous trouver</h3>
+        <a class="footer-link" href="https://maps.app.goo.gl/CFT8iTQunTVEHa4A9" target="_blank" rel="noopener"><svg><use href="#i-pin"></use></svg><span id="footerAddress">5CPR+327, Avenue du 1er Novembre, Sétif</span></a>
+      </div>
+      <div>
+        <h3 data-i18n="contact">Contact</h3>
+        <a class="footer-link" href="tel:+213556521689"><svg><use href="#i-phone"></use></svg><span>0556 52 16 89</span></a>
+        <a class="footer-email" href="mailto:mrpastasetif@gmail.com">mrpastasetif@gmail.com</a>
+      </div>
+      <div>
+        <h3 data-i18n="openingHours">Horaires</h3>
+        <p class="hours-line"><span data-i18n="everyDay">Tous les jours</span><b>11:30 — 23:00</b></p>
+      </div>
+    </div>
+    <div class="footer-bottom shell"><span>© <span id="year"></span> Mr Pasta • <a href="/admin" style="color:var(--c-accent);text-decoration:none;">Espace Admin ⚙️</a></span><span data-i18n="pricesNotice">Prix en dinars algériens • Photos du menu officiel</span></div>
+  </footer>
+
+  <button class="cart-fab" id="cartFab" type="button" aria-label="Ouvrir la commande" aria-controls="cartDrawer" hidden>
+    <span class="cart-icon-wrap"><svg><use href="#i-cart"></use></svg><b id="cartCount">0</b></span>
+    <span><small data-i18n="yourOrder">Votre commande</small><strong id="cartFabTotal">0 DA</strong></span>
+    <svg class="cart-chevron"><use href="#i-chevron"></use></svg>
+  </button>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <aside class="drawer info-drawer" id="infoDrawer" aria-hidden="true" aria-labelledby="infoTitle">
+    <div class="drawer-header">
+      <div><p class="eyebrow dark" data-i18n="practicalInfo">Informations pratiques</p><h2 id="infoTitle">Mr Pasta</h2></div>
+      <button class="icon-button close-layer" type="button" aria-label="Fermer"><svg><use href="#i-x"></use></svg></button>
+    </div>
+    <div class="drawer-scroll">
+      <img class="info-cover" src="assets/restaurant.webp" alt="Mr Pasta à Sétif" width="1200" height="700">
+      <div class="info-list">
+        <a href="https://maps.app.goo.gl/CFT8iTQunTVEHa4A9" target="_blank" rel="noopener"><span class="info-icon"><svg><use href="#i-pin"></use></svg></span><span><b data-i18n="address">Adresse</b><small id="drawerAddress">5CPR+327, Avenue du 1er Novembre, Sétif</small></span><svg class="end"><use href="#i-chevron"></use></svg></a>
+        <a href="tel:+213556521689"><span class="info-icon"><svg><use href="#i-phone"></use></svg></span><span><b data-i18n="phone">Téléphone</b><small>0556 52 16 89</small></span><svg class="end"><use href="#i-chevron"></use></svg></a>
+        <div><span class="info-icon"><svg><use href="#i-clock"></use></svg></span><span><b data-i18n="openingHours">Horaires</b><small><span data-i18n="everyDay">Tous les jours</span> · 11:30 — 23:00</small></span></div>
+        <a href="/admin"><span class="info-icon" style="display:flex;align-items:center;justify-content:center;">⚙️</span><span><b>Espace Administration</b><small>Gestion du menu & tarifs</small></span><svg class="end"><use href="#i-chevron"></use></svg></a>
+      </div>
+      <div class="drawer-socials">
+        <a href="https://www.instagram.com/mrpasta19/" target="_blank" rel="noopener"><svg><use href="#i-instagram"></use></svg>Instagram</a>
+        <a href="https://www.facebook.com/mrpasta19/" target="_blank" rel="noopener"><svg><use href="#i-facebook"></use></svg>Facebook</a>
+      </div>
+      <p class="data-note" data-i18n="dataNote">Informations vérifiées à partir de la fiche Google Maps et des pages officielles de Mr Pasta.</p>
+    </div>
+  </aside>
+
+  <aside class="drawer cart-drawer" id="cartDrawer" aria-hidden="true" aria-labelledby="cartTitle">
+    <div class="drawer-header">
+      <div><p class="eyebrow dark" data-i18n="summary">Récapitulatif</p><h2 id="cartTitle" data-i18n="yourOrder">Votre commande</h2></div>
+      <button class="icon-button close-layer" type="button" aria-label="Fermer"><svg><use href="#i-x"></use></svg></button>
+    </div>
+    <div class="drawer-scroll cart-scroll">
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-empty" id="cartEmpty">
+        <span><svg><use href="#i-cart"></use></svg></span>
+        <h3 data-i18n="emptyCart">Votre panier est vide</h3>
+        <p data-i18n="emptyCartText">Ajoutez les plats qui vous font envie.</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" hidden>
+      <label class="table-field"><span data-i18n="tableNumber">Numéro de table (optionnel)</span><input id="tableNumber" type="text" inputmode="numeric" maxlength="3" placeholder="Ex. 12"></label>
+      <div class="total-line"><span data-i18n="total">Total</span><strong id="cartTotal">0 DA</strong></div>
+      <button class="button primary wide" id="createQrButton" type="button"><svg><use href="#i-qr"></use></svg><span data-i18n="createQr">Créer le QR de commande</span></button>
+      <p class="cart-help" data-i18n="qrHelp">Présentez ensuite le code au serveur. Aucune commande n’est envoyée automatiquement.</p>
+      <button class="clear-cart" id="clearCartButton" type="button"><svg><use href="#i-trash"></use></svg><span data-i18n="clearCart">Vider la commande</span></button>
+    </div>
+  </aside>
+
+  <section class="item-modal modal-layer" id="itemModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="itemName">
+    <button class="modal-close close-layer" type="button" aria-label="Fermer"><svg><use href="#i-x"></use></svg></button>
+    <div class="item-media"><img id="itemImage" src="assets/dish-placeholder.svg" alt="" width="720" height="540"></div>
+    <div class="item-modal-content">
+      <p class="item-category" id="itemCategory"></p>
+      <h2 id="itemName"></h2>
+      <p class="item-arabic" id="itemArabic" lang="ar" dir="rtl"></p>
+      <p class="item-description" id="itemDescription"></p>
+      <fieldset class="size-picker" id="sizePicker" hidden>
+        <legend data-i18n="chooseSize">Choisissez la taille</legend>
+        <div id="sizeOptions"></div>
+      </fieldset>
+      <div class="item-action-row">
+        <div><small data-i18n="price">Prix</small><strong id="itemPrice">0 DA</strong></div>
+        <button class="button primary" id="itemAddButton" type="button"><svg><use href="#i-plus"></use></svg><span data-i18n="add">Ajouter</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="qr-modal modal-layer" id="qrModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="qrTitle">
+    <button class="modal-close close-layer" type="button" aria-label="Fermer"><svg><use href="#i-x"></use></svg></button>
+    <div class="qr-content">
+      <span class="qr-badge"><svg><use href="#i-qr"></use></svg></span>
+      <p class="eyebrow dark">Mr Pasta</p>
+      <h2 id="qrTitle" data-i18n="qrReady">Votre QR est prêt</h2>
+      <p data-i18n="showServer">Présentez ce code au serveur pour transmettre votre sélection.</p>
+      <div class="qr-canvas-wrap" id="qrCode"></div>
+      <div class="qr-summary"><span id="qrOrderId">#—</span><strong id="qrTotal">0 DA</strong></div>
+      <button class="button primary wide" id="downloadQr" type="button" data-i18n="downloadQr">Enregistrer le QR</button>
+      <button class="text-button close-layer" type="button" data-i18n="backToMenu">Retour au menu</button>
+    </div>
+  </section>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+
+  <noscript><div class="noscript">JavaScript est nécessaire pour afficher le menu digital de Mr Pasta.</div></noscript>
+  <script src="vendor/qrious.min.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+-- Schema for Mr Pasta Menu D1 Database
+
+CREATE TABLE IF NOT EXISTS dishes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  category TEXT NOT NULL,
+  group_name TEXT NOT NULL,
+  name_fr TEXT NOT NULL,
+  name_ar TEXT DEFAULT '',
+  desc_fr TEXT DEFAULT '',
+  desc_ar TEXT DEFAULT '',
+  price REAL NOT NULL,
+  sizes_json TEXT DEFAULT NULL,
+  image_url TEXT NOT NULL,
+  available INTEGER DEFAULT 1,
+  sort_order INTEGER DEFAULT 0,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_dishes_category ON dishes(category);
+CREATE INDEX IF NOT EXISTS idx_dishes_available ON dishes(available);
+
+CREATE TABLE IF NOT EXISTS restaurant (
+  key TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS admins (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  salt TEXT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS uploads (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  filename TEXT UNIQUE NOT NULL,
+  content_type TEXT NOT NULL,
+  data BLOB NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);

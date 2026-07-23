@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 540" role="img" aria-label="Mr Pasta">
+ <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#10291b"/><stop offset="1" stop-color="#08150e"/></linearGradient></defs>
+ <rect width="720" height="540" fill="url(#g)"/><circle cx="360" cy="250" r="120" fill="none" stroke="#d2b06c" stroke-width="5" opacity=".45"/><path d="M280 250c40-80 120-80 160 0-40 80-120 80-160 0Z" fill="none" stroke="#d2b06c" stroke-width="8" opacity=".75"/><text x="360" y="425" fill="#f2eadb" font-family="Georgia,serif" font-size="42" text-anchor="middle">Mr Pasta</text>
+</svg>

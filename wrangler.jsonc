@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mr-pasta-menu",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-09-23",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "mr-pasta-db",
+      "database_id": "533b95f4-2d70-4012-a144-6e5dc174fabe"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
