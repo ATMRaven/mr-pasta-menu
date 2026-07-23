@@ -30,7 +30,7 @@
       }
       const $=s=>document.querySelector(s); const esc=v=>String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
       const money=v=>`${Number(v||0).toLocaleString('fr-FR')} DA`;
-      let menu=new Map(),orders=load(),scanner=null;
+      let menu=new Map(),orders=load(),scanner=null,mediaStream=null;
       function load(){try{const v=JSON.parse(localStorage.getItem('mrp-orders')||'[]');return Array.isArray(v)?v:[]}catch{return[]}}
       function save(){localStorage.setItem('mrp-orders',JSON.stringify(orders));render()}
       function toast(msg,type=''){const n=document.createElement('div');n.className='toast '+type;n.textContent=msg;$('#toasts').append(n);setTimeout(()=>n.remove(),3200)}
@@ -46,35 +46,68 @@
         $('#scannerModal').setAttribute('aria-hidden','false');
         
         const videoEl = $('#video');
-        if (scanner) {
-          try { scanner.destroy(); } catch (_) {}
-          scanner = null;
-        }
-        
-        scanner = new QrScanner(videoEl, result => {
-          closeScanner();
-          process(result.data);
-        }, {
-          highlightScanRegion: true,
-          highlightCodeOutline: true,
-          preferredCamera: 'environment',
-          returnDetailedScanResult: true
-        });
+        stopCameraStream();
 
         try {
+          // Initialize QrScanner with environment camera preference
+          scanner = new QrScanner(videoEl, result => {
+            closeScanner();
+            process(result.data);
+          }, {
+            highlightScanRegion: true,
+            highlightCodeOutline: true,
+            preferredCamera: 'environment',
+            maxScansPerSecond: 10,
+            calculateScanRegion: v => ({ x: 0, y: 0, width: v.videoWidth || 640, height: v.videoHeight || 480, downSampleFactor: 1 })
+          });
+
           await scanner.start();
         } catch(e) {
-          closeScanner();
-          console.error(e);
-          toast("Accès caméra impossible: " + (e.message || e),'error');
+          console.warn('QrScanner direct start error, trying getUserMedia fallback:', e);
+          try {
+            // Native MediaStream fallback for browsers where QrScanner start is black
+            mediaStream = await navigator.mediaDevices.getUserMedia({
+              video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } }
+            });
+            videoEl.srcObject = mediaStream;
+            await videoEl.play();
+
+            scanner = new QrScanner(videoEl, result => {
+              closeScanner();
+              process(result.data);
+            }, {
+              highlightScanRegion: true,
+              highlightCodeOutline: true,
+              maxScansPerSecond: 10
+            });
+            await scanner.start();
+          } catch (err2) {
+            closeScanner();
+            console.error('Camera fallback error:', err2);
+            toast("Accès caméra impossible: " + (err2.message || err2),'error');
+          }
         }
       }
 
-      function closeScanner(){
+      function stopCameraStream(){
         if (scanner) {
           try { scanner.stop(); scanner.destroy(); } catch (_) {}
           scanner = null;
         }
+        if (mediaStream) {
+          try {
+            mediaStream.getTracks().forEach(track => track.stop());
+          } catch (_) {}
+          mediaStream = null;
+        }
+        const videoEl = $('#video');
+        if (videoEl) {
+          videoEl.srcObject = null;
+        }
+      }
+
+      function closeScanner(){
+        stopCameraStream();
         $('#scannerModal').classList.remove('open');
         $('#scannerModal').setAttribute('aria-hidden','true');
       }

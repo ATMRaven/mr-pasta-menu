@@ -1,4 +1,4 @@
-const CACHE = 'mr-pasta-pos-v3';
+const CACHE = 'mr-pasta-pos-v4';
 const CORE = [
   './',
   './index.html',
@@ -7,13 +7,16 @@ const CORE = [
   './admin.html',
   './admin.css',
   './admin.js',
+  './srv.html',
   './manifest.json',
   './assets/logo.png',
   './assets/restaurant.webp',
   './assets/dish-placeholder.svg',
   './assets/icon-192.png',
   './assets/icon-512.png',
-  './vendor/qrious.min.js'
+  './vendor/qrious.min.js',
+  './vendor/qr-scanner.umd.min.js',
+  './vendor/qr-scanner-worker.min.js'
 ];
 
 self.addEventListener('install', event => {
