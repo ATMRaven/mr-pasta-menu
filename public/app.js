@@ -594,8 +594,8 @@
 
       if (!menuData || !restaurantData) {
         const [menuResponse, restaurantResponse] = await Promise.all([
-          fetch('data/menu.json', { cache: 'no-store' }),
-          fetch('data/restaurant.json', { cache: 'no-store' })
+          fetch('./data/menu.json', { cache: 'no-store' }),
+          fetch('./data/restaurant.json', { cache: 'no-store' })
         ]);
         if (!menuResponse.ok || !restaurantResponse.ok) throw new Error('Data unavailable');
         menuData = await menuResponse.json();

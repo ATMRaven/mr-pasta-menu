@@ -1,0 +1,1066 @@
+{
+  "retrieved": "2026-07-14",
+  "restaurant": "Mr Pasta Sétif",
+  "items": {
+    "1": {
+      "menuPage": "https://braviox.com/entrees-froides/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-15.jpg",
+      "sourceLabel": "Salade Cassique 300 DZD"
+    },
+    "2": {
+      "menuPage": "https://braviox.com/entrees-froides/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-2.jpg",
+      "sourceLabel": "Salade César 600 DZD"
+    },
+    "3": {
+      "menuPage": "https://braviox.com/entrees-froides/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-1.jpg",
+      "sourceLabel": "Croquettes Camembert 500 DZD"
+    },
+    "4": {
+      "menuPage": "https://braviox.com/entrees-froides/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.53_c453c072.jpg",
+      "sourceLabel": "Salade Niçoise 500 DZD"
+    },
+    "5": {
+      "menuPage": "https://braviox.com/entrees-froides/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.57_4006c864.jpg",
+      "sourceLabel": "Salade Chicken 600 DZD"
+    },
+    "6": {
+      "menuPage": "https://braviox.com/entrees-froides/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-18.jpg",
+      "sourceLabel": "Salade Tomate Mozzarella Pesto 800 DZD"
+    },
+    "7": {
+      "menuPage": "https://braviox.com/entrees-froides/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-19.jpg",
+      "sourceLabel": "Salade Burrata 1000 DZD"
+    },
+    "8": {
+      "menuPage": "https://braviox.com/entrees-froides/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-32.jpg",
+      "sourceLabel": "Salade MR Pasta 1000 DZD"
+    },
+    "9": {
+      "menuPage": "https://braviox.com/entrees-froides/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.15_4b9e6855.jpg",
+      "sourceLabel": "Créme d'ail 200 DZD"
+    },
+    "10": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.09.27_c252ffa4.jpg",
+      "sourceLabel": "Soupe de légumes 300 DZD"
+    },
+    "11": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.56_f19de630.jpg",
+      "sourceLabel": "Soupe de lentilles 300 DZD"
+    },
+    "12": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Gratin-Viande-hache-Camambert.jpg",
+      "sourceLabel": "Gratin viande haché + camambert 600 DZD"
+    },
+    "13": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Poutine-Poulet-Crispy-Viande-Mix.jpg",
+      "sourceLabel": "Poutine 700 DZD"
+    },
+    "14": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.25_36f2434d.jpg",
+      "sourceLabel": "Gratin de viande 500 DZD"
+    },
+    "15": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.58_925ccd57.jpg",
+      "sourceLabel": "Gratin de poulet 500 DZD"
+    },
+    "16": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-22.jpg",
+      "sourceLabel": "Galette de Camembert pané au miel 700 DZD"
+    },
+    "17": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.22_2964541e.jpg",
+      "sourceLabel": "Bourek Poulet 200 DZD"
+    },
+    "18": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.24_f9d342d7.jpg",
+      "sourceLabel": "Bourek Viande 200 DZD"
+    },
+    "19": {
+      "menuPage": "https://braviox.com/entrees-chaudes/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Barquette-frite.jpg",
+      "sourceLabel": "Barquette de frite 300 DZD"
+    },
+    "20": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/190130-pasta-puttanesca-horizontal-1549421254.jpg",
+      "sourceLabel": "Puttanesca 900 DZD"
+    },
+    "21": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/06/Pasta-a-la-marinara.jpg",
+      "sourceLabel": "Marinara 600 DZD"
+    },
+    "22": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.06_ceb723da.jpg",
+      "sourceLabel": "Bolonnaise 900 DZD"
+    },
+    "23": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-4.jpg",
+      "sourceLabel": "Crevette 1800 DZD"
+    },
+    "24": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.59_843c1584.jpg",
+      "sourceLabel": "Fruit de mer 1800 DZD"
+    },
+    "25": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-5.jpg",
+      "sourceLabel": "A la Norma 700 DZD"
+    },
+    "26": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-26.jpg",
+      "sourceLabel": "Arrabiata 600 DZD"
+    },
+    "27": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-17.jpg",
+      "sourceLabel": "Pomodoro 500 DZD"
+    },
+    "28": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-27.jpg",
+      "sourceLabel": "Ail & Huile d'olive 500 DZD"
+    },
+    "29": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/4-Fromages.jpg",
+      "sourceLabel": "4 Fromages 1100 DZD"
+    },
+    "30": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-16.jpg",
+      "sourceLabel": "Bibi Rose 1800 DZD"
+    },
+    "31": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-51.jpg",
+      "sourceLabel": "Carbonara 900 DZD"
+    },
+    "32": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Dinde-fume.jpg",
+      "sourceLabel": "Dinde Fumé 800 DZD"
+    },
+    "33": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-52.jpg",
+      "sourceLabel": "Poivrons & Chorizo 900 DZD"
+    },
+    "34": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Poulet-aux-epinards.jpg",
+      "sourceLabel": "Poulet aux épinards 900 DZD"
+    },
+    "35": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/06/c6f7b83ac8f4656fad8b2143c55aa0e6.jpg",
+      "sourceLabel": "Poulet créme champignons 1000 DZD"
+    },
+    "36": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Saumon-Fume.jpg",
+      "sourceLabel": "Saumon fumé 1200 DZD"
+    },
+    "37": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.13.01_c235afcd.jpg",
+      "sourceLabel": "Alfredo 1000 DZD"
+    },
+    "38": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-12.51.52_f4a27825.jpg",
+      "sourceLabel": "Crevette Sauce Citron 1800 DZD"
+    },
+    "39": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.58_59ac4ff3.jpg",
+      "sourceLabel": "Charcuterie 1200 DZD"
+    },
+    "40": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.13.01_71894edb.jpg",
+      "sourceLabel": "Poulet Pesto 1000 DZD"
+    },
+    "41": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.13.01_c235afcd.jpg",
+      "sourceLabel": "Alfredo 1000 DZD"
+    },
+    "42": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-18.jpg",
+      "sourceLabel": "Milanaise 1000 DZD"
+    },
+    "43": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Image-34.jpg",
+      "sourceLabel": "Pilon Poulet Pané 1200 DZD"
+    },
+    "44": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-19.jpg",
+      "sourceLabel": "Lemon au poulet 1000 DZD"
+    },
+    "45": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-16.jpg",
+      "sourceLabel": "Bibi Rose 1800 DZD"
+    },
+    "46": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-16.jpg",
+      "sourceLabel": "Bibi Rose 1800 DZD"
+    },
+    "47": {
+      "menuPage": "https://braviox.com/pasta/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-16.jpg",
+      "sourceLabel": "Bibi Rose 1800 DZD"
+    },
+    "48": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-15-1.jpg",
+      "sourceLabel": "Lasagne Fruit de mer 1800 DZD"
+    },
+    "49": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-12.51.51_554715f4.jpg",
+      "sourceLabel": "Lasagne 4 Fromages 1000 DZD"
+    },
+    "50": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-1-1.jpg",
+      "sourceLabel": "Lasagne Bolognaise 900 DZD"
+    },
+    "51": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.13.05_3805c5c1.jpg",
+      "sourceLabel": "Lasagne Poulet Créme Champignons 1000 DZD"
+    },
+    "52": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-35.jpg",
+      "sourceLabel": "Lasagne poulet à la toscane 900 DZD"
+    },
+    "53": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-53.jpg",
+      "sourceLabel": "Lasagne a la pomodoro 700 DZD"
+    },
+    "54": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-2-1.jpg",
+      "sourceLabel": "Ravioli Fromage 1000 DZD"
+    },
+    "55": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.35_93d5a736.jpg",
+      "sourceLabel": "Ravioli Boeuf 1000 DZD"
+    },
+    "56": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-18-1.jpg",
+      "sourceLabel": "Ravioli épinard 1000 DZD"
+    },
+    "57": {
+      "menuPage": "https://braviox.com/ravioli-lasagne/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-31.jpg",
+      "sourceLabel": "Ravioli Poulet Champignon 1000 DZD"
+    },
+    "58": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-8-1.jpg",
+      "sourceLabel": "Crevette Pané 800 DZD"
+    },
+    "59": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-9-1.jpg",
+      "sourceLabel": "Oeuf Pané 500 DZD"
+    },
+    "60": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-11-1.jpg",
+      "sourceLabel": "Crevette 1800 DZD"
+    },
+    "61": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-12.51.51_d747b1c0.jpg",
+      "sourceLabel": "Gourmande 1000 DZD"
+    },
+    "62": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.32_bca7eeb1.jpg",
+      "sourceLabel": "Dinde fumée 1000 DZD"
+    },
+    "63": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.37_850ac84b.jpg",
+      "sourceLabel": "Végétarienne 800 DZD"
+    },
+    "64": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.38_705334f7.jpg",
+      "sourceLabel": "Poulet 1000 DZD"
+    },
+    "65": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-10.jpg",
+      "sourceLabel": "Ananas 1000 DZD"
+    },
+    "66": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-112-1.jpg",
+      "sourceLabel": "California Rolle Saumon 1500 DZD Crevette 1500 DZD Poulet 1000 DZD"
+    },
+    "67": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-112-1.jpg",
+      "sourceLabel": "California Rolle Saumon 1500 DZD Crevette 1500 DZD Poulet 1000 DZD"
+    },
+    "68": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-112-1.jpg",
+      "sourceLabel": "California Rolle Saumon 1500 DZD Crevette 1500 DZD Poulet 1000 DZD"
+    },
+    "69": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-14-1.jpg",
+      "sourceLabel": "Crunchy Rolle Saumon 1500 DZD Crevette 1500 DZD Poulet 1000 DZD"
+    },
+    "70": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-14-1.jpg",
+      "sourceLabel": "Crunchy Rolle Saumon 1500 DZD Crevette 1500 DZD Poulet 1000 DZD"
+    },
+    "71": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-14-1.jpg",
+      "sourceLabel": "Crunchy Rolle Saumon 1500 DZD Crevette 1500 DZD Poulet 1000 DZD"
+    },
+    "72": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-15.jpg",
+      "sourceLabel": "Macki Rolle Saumon 1500 DZD Crevette 1500 DZD Poulet 1000 DZD"
+    },
+    "73": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-15.jpg",
+      "sourceLabel": "Macki Rolle Saumon 1500 DZD Crevette 1500 DZD Poulet 1000 DZD"
+    },
+    "74": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-15.jpg",
+      "sourceLabel": "Macki Rolle Saumon 1500 DZD Crevette 1500 DZD Poulet 1000 DZD"
+    },
+    "75": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-25.jpg",
+      "sourceLabel": "Mix 08 Piéces 1500 DZD 16 Piéces 2500 DZD"
+    },
+    "76": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-25.jpg",
+      "sourceLabel": "Mix 08 Piéces 1500 DZD 16 Piéces 2500 DZD"
+    },
+    "77": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-86.jpg",
+      "sourceLabel": "Tasty Crousty Poulet 650 DZD Crevette 1200 DZD"
+    },
+    "78": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-86.jpg",
+      "sourceLabel": "Tasty Crousty Poulet 650 DZD Crevette 1200 DZD"
+    },
+    "79": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-87.jpg",
+      "sourceLabel": "Borrito Saumon 2000 DZD"
+    },
+    "80": {
+      "menuPage": "https://braviox.com/menu-asiatique/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-88.jpg",
+      "sourceLabel": "Tiger Roll 1800 DZD"
+    },
+    "81": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-12.51.53_b8c771c4.jpg",
+      "sourceLabel": "Crispy 500 DZD"
+    },
+    "82": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.09.16_c4cef120.jpg",
+      "sourceLabel": "Classique 400 DZD"
+    },
+    "83": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.13_653c8915.jpg",
+      "sourceLabel": "Pepper 450 DZD"
+    },
+    "84": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.13.05_f61277c7.jpg",
+      "sourceLabel": "Hollandia 600 DZD"
+    },
+    "85": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.13.06_be8f6ecc.jpg",
+      "sourceLabel": "Americain 450 DZD"
+    },
+    "86": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.13.07_5b6e38cb.jpg",
+      "sourceLabel": "Burger Bleu 600 DZD"
+    },
+    "87": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Image-7.jpg",
+      "sourceLabel": "Roulet Poulet Crispy 700 DZD"
+    },
+    "88": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-20.jpg",
+      "sourceLabel": "Calzone Pizza Poulet 700 DZD Viande Haché 800 DZD Chef 1000 DZD Poulet Fumé 700 DZD"
+    },
+    "89": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-20.jpg",
+      "sourceLabel": "Calzone Pizza Poulet 700 DZD Viande Haché 800 DZD Chef 1000 DZD Poulet Fumé 700 DZD"
+    },
+    "90": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-20.jpg",
+      "sourceLabel": "Calzone Pizza Poulet 700 DZD Viande Haché 800 DZD Chef 1000 DZD Poulet Fumé 700 DZD"
+    },
+    "91": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-20.jpg",
+      "sourceLabel": "Calzone Pizza Poulet 700 DZD Viande Haché 800 DZD Chef 1000 DZD Poulet Fumé 700 DZD"
+    },
+    "92": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-21.jpg",
+      "sourceLabel": "Panozzo Poulet 500 DZD Viande Haché 500 DZD Mixte 500 DZD"
+    },
+    "93": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-21.jpg",
+      "sourceLabel": "Panozzo Poulet 500 DZD Viande Haché 500 DZD Mixte 500 DZD"
+    },
+    "94": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-21.jpg",
+      "sourceLabel": "Panozzo Poulet 500 DZD Viande Haché 500 DZD Mixte 500 DZD"
+    },
+    "95": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-33.jpg",
+      "sourceLabel": "Club Sandwich Poulet 300 DZD Viande Haché 500 DZD Poulet Fumé 300 DZD"
+    },
+    "96": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-33.jpg",
+      "sourceLabel": "Club Sandwich Poulet 300 DZD Viande Haché 500 DZD Poulet Fumé 300 DZD"
+    },
+    "97": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-33.jpg",
+      "sourceLabel": "Club Sandwich Poulet 300 DZD Viande Haché 500 DZD Poulet Fumé 300 DZD"
+    },
+    "98": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-49.png",
+      "sourceLabel": "Tacos/Roulet Poulet 400 DZD Viande Hachée 500 DZD Mixte 500 DZD + Supplement Gratiné 200 DZD"
+    },
+    "99": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-49.png",
+      "sourceLabel": "Tacos/Roulet Poulet 400 DZD Viande Hachée 500 DZD Mixte 500 DZD + Supplement Gratiné 200 DZD"
+    },
+    "100": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-49.png",
+      "sourceLabel": "Tacos/Roulet Poulet 400 DZD Viande Hachée 500 DZD Mixte 500 DZD + Supplement Gratiné 200 DZD"
+    },
+    "101": {
+      "menuPage": "https://braviox.com/burgers-sandwiches/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-49.png",
+      "sourceLabel": "Tacos/Roulet Poulet 400 DZD Viande Hachée 500 DZD Mixte 500 DZD + Supplement Gratiné 200 DZD"
+    },
+    "102": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-16-1.jpg",
+      "sourceLabel": "Escalope Grillé 800 DZD"
+    },
+    "103": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.13.05_98348671.jpg",
+      "sourceLabel": "Escalope Pané 1000 DZD"
+    },
+    "104": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-17-1.jpg",
+      "sourceLabel": "Escalope Créme Champignon 1200 DZD"
+    },
+    "105": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.39_559fc074.jpg",
+      "sourceLabel": "Escalope a la sorrentina 1000 DZD"
+    },
+    "106": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-186.jpg",
+      "sourceLabel": "Escalope au Fromage 1200 DZD"
+    },
+    "107": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-24.jpg",
+      "sourceLabel": "Escalope au citron 1000 DZD"
+    },
+    "108": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-23.jpg",
+      "sourceLabel": "Pignon de poulet pané 1200 DZD"
+    },
+    "109": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-187.jpg",
+      "sourceLabel": "Entrecote Grillé 200 g 1400 DZD"
+    },
+    "110": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-20-1.jpg",
+      "sourceLabel": "Fillet Grillé 200 g 1800 DZD"
+    },
+    "111": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-21-1.jpg",
+      "sourceLabel": "Cote de boeuf 300 g 1800 DZD"
+    },
+    "112": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-17-1.jpg",
+      "sourceLabel": "Escalope Créme Champignon 1200 DZD"
+    },
+    "113": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-17-1.jpg",
+      "sourceLabel": "Escalope Créme Champignon 1200 DZD"
+    },
+    "114": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-17-1.jpg",
+      "sourceLabel": "Escalope Créme Champignon 1200 DZD"
+    },
+    "115": {
+      "menuPage": "https://braviox.com/grillades/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-17-1.jpg",
+      "sourceLabel": "Escalope Créme Champignon 1200 DZD"
+    },
+    "116": {
+      "menuPage": "https://braviox.com/risoto/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-20.jpg",
+      "sourceLabel": "4 Fromage 1000 DZD"
+    },
+    "117": {
+      "menuPage": "https://braviox.com/risoto/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-21.jpg",
+      "sourceLabel": "Crevette 1200 DZD"
+    },
+    "118": {
+      "menuPage": "https://braviox.com/risoto/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-28.jpg",
+      "sourceLabel": "Poulet Pesto 1000 DZD"
+    },
+    "119": {
+      "menuPage": "https://braviox.com/risoto/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-29.jpg",
+      "sourceLabel": "Poulet Champignon 1000 DZD"
+    },
+    "120": {
+      "menuPage": "https://braviox.com/risoto/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-30.jpg",
+      "sourceLabel": "Bibi Rosé 1200 DZD"
+    },
+    "121": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Image-3.jpg",
+      "sourceLabel": "Violetta Sauce violetta, thon, oignon, basilic, fromage L 800 DZD XL 1400 DZD"
+    },
+    "122": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-12.51.54_cf479077.jpg",
+      "sourceLabel": "Spinachi Sauce Verdey, épinard, champignon frais, mozzarella L 800 DZD XL 1400 DZD"
+    },
+    "123": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-2-2.jpg",
+      "sourceLabel": "Dil Toto Sauce, blanche Noix, raisins secs, amandes, noix de cajou, miel. L 700 DZD XL 1400 DZD"
+    },
+    "124": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.40_010bdb00.jpg",
+      "sourceLabel": "Camembert poulet Sauce blanche, Camambert, Poulet, Mozzarella L 800 DZD XL 1400 DZD"
+    },
+    "125": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.41_a62163ec.jpg",
+      "sourceLabel": "Chévre Miel Sauce blanche, Fromage chévre, Miel, Mozzarella L 900 DZD XL 1400 DZD"
+    },
+    "126": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-2.jpg",
+      "sourceLabel": "Carnivore Sauce blanche, poulet, viande haché, merguez, peperoni, champignon L 1000 DZD XL 1700 DZD"
+    },
+    "127": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-89.jpg",
+      "sourceLabel": "Poulet Pesto Sauce Pesto, Poulet, Mozzarella L 800 DZD XL 1400 DZD"
+    },
+    "128": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.42_45935e50.jpg",
+      "sourceLabel": "Steak Sauce Blanche, Steak Haché, olive, Mozzarella L 600 DZD XL 1400 DZD"
+    },
+    "129": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.43_2767f828.jpg",
+      "sourceLabel": "Verdey Viande Sauce Verdey, légumes, viande, mozzarella. L 700 DZD XL 1400 DZD"
+    },
+    "130": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.49_0f9cca67.jpg",
+      "sourceLabel": "Verdey Poulet Sauce Verdey, poulet, légumes, mozzarella. L 700 DZD XL 1400 DZD"
+    },
+    "131": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-1.jpg",
+      "sourceLabel": "Verdey Sauce Verdey, légumes, mozzarella. L 500 DZD XL 900 DZD"
+    },
+    "132": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.50_0ffbe6a8.jpg",
+      "sourceLabel": "Kebab Sauce blanche, sauce au gruyère, kebab mariné, mozzarella. L 800 DZD XL 1400 DZD"
+    },
+    "133": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.50_3c6fef2d.jpg",
+      "sourceLabel": "Boisée Sauce blanche, Poulet, Mozzarella L 600 DZD XL 1200 DZD"
+    },
+    "134": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.51_76ff02c1.jpg",
+      "sourceLabel": "4 Fromage Sauce blanche, mozzarella, gruyère, fromage bleu, parmesan. L 1000 DZD XL 1500 DZD"
+    },
+    "135": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.51_b7267d22.jpg",
+      "sourceLabel": "Carbonara Sauce blanche, Sauce carbonara, Poulet, Poulet fumée, Mozzarella L 800 DZD XL 1400 DZD"
+    },
+    "136": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.52_7bdf6ec6.jpg",
+      "sourceLabel": "Poulet créme champignon Sauce Créme Champignon, Poulet, Champignons, Mozzarella L 800 DZD XL 1400 DZD"
+    },
+    "137": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.46_54977152.jpg",
+      "sourceLabel": "Burrata Sauce blanche, TRomate cerise, Burrata, Mozzarella L 1200 DZD XL 2000 DZD"
+    },
+    "138": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/NoPath-Copy-3-1.jpg",
+      "sourceLabel": "Chef Créme fraiche, viande haché, Peperoni, poulet, champignons L 900 DZD XL 1500 DZD"
+    },
+    "139": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-34-1.jpg",
+      "sourceLabel": "Crazy Sauce blanche poulet pané, sauce cury, fromage, mozza pané L 800 DZD XL 1400 DZD"
+    },
+    "140": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-55.jpg",
+      "sourceLabel": "Crémiére Sauce Crémiére, Poulet, Mozzarella L 800 DZD XL 1400 DZD"
+    },
+    "141": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.46_54977152.jpg",
+      "sourceLabel": "Burrata Sauce blanche, TRomate cerise, Burrata, Mozzarella L 1200 DZD XL 2000 DZD"
+    },
+    "142": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-34-1.jpg",
+      "sourceLabel": "Crazy Sauce blanche poulet pané, sauce cury, fromage, mozza pané L 800 DZD XL 1400 DZD"
+    },
+    "143": {
+      "menuPage": "https://braviox.com/pizza-creme-fraiche/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-55.jpg",
+      "sourceLabel": "Crémiére Sauce Crémiére, Poulet, Mozzarella L 800 DZD XL 1400 DZD"
+    },
+    "144": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Chicken-Thika.jpg",
+      "sourceLabel": "Chicken Thicka Sauce tomate, poulet mariné india, champignon frais, poivron, Mozzarella L 800 DZD XL 1400 DZD"
+    },
+    "145": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-12.51.54_f337ea70.jpg",
+      "sourceLabel": "Oriental Sauce tomate, Légumes, Mergeuz, Mozzarella L 900 DZD XL 1400 DZD"
+    },
+    "146": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-3.jpg",
+      "sourceLabel": "Bolognaise Sauce tomate bolognaise, Mozzarella L 900 DZD XL 1400 DZD"
+    },
+    "147": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.41_1cd61768.jpg",
+      "sourceLabel": "Végétarienne Sauce Tomate, Légumes, Mozzarella L 500 DZD XL 1000 DZD"
+    },
+    "148": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-4-1.jpg",
+      "sourceLabel": "Siciliana Sauce tomate, Thon Olives, Onions, Mozzarella L 600 DZD XL 1200 DZD"
+    },
+    "149": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-160.jpg",
+      "sourceLabel": "Cheesy Sauce tomate, fromage fondu, mozarella L 600 DZD XL 1000 DZD"
+    },
+    "150": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.43_ddb2227a.jpg",
+      "sourceLabel": "Chasseur Sauce tomate, Champignons frais, Mozzarella L 500 DZD XL 1000 DZD"
+    },
+    "151": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.44_0bcfb91b.jpg",
+      "sourceLabel": "Mozza Basilic Sauce tomate, Basilic, Mozzarella L 500 DZD XL 1000 DZD"
+    },
+    "152": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-7.jpg",
+      "sourceLabel": "Lahmajun Sauce tomate, viande hachée, onions, persil L 700 DZD XL 1200 DZD"
+    },
+    "153": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-34.jpg",
+      "sourceLabel": "Romana Kefta Sauce rouge, tomate, viande haché mariné, fromage blanc L 800 DZD XL 1400 DZD"
+    },
+    "154": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-8.jpg",
+      "sourceLabel": "Fruit de mer Sauce tomate, fruit de mer frais, mozzarella L 1200 DZD XL 2000 DZD"
+    },
+    "155": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.46_14132d4a.jpg",
+      "sourceLabel": "Napolitaine Sauce Tomate, Capres, Anchois, Mozzarella L 600 DZD XL 1200 DZD"
+    },
+    "156": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.47_29270ec3.jpg",
+      "sourceLabel": "Pepperoni Sauce tomate, Peperoni, Mozzarella L 800 DZD XL 1400 DZD"
+    },
+    "157": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-54.jpg",
+      "sourceLabel": "Charcuterie Sauce tomate, charcuterie, mozzarella L 1000 DZD XL 1500 DZD"
+    },
+    "158": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-11.jpg",
+      "sourceLabel": "Américaine Sauce tomate, Viande hachée, poivrons, oeuf, Mozzarella L 700 DZD XL 1400 DZD"
+    },
+    "159": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.48_05d0f03f.jpg",
+      "sourceLabel": "Buffalo Sauce tomate, Champignons frais, Viande hachée, Mozzarella L 600 DZD XL 1200 DZD"
+    },
+    "160": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.48_aeb56e9e.jpg",
+      "sourceLabel": "Margaritta Sauce tomate, Mozarella L 300 DZD XL 700 DZD"
+    },
+    "161": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.48_e3983081.jpg",
+      "sourceLabel": "Algérienne Sauce tomate, Sauce Algérienne, Mozarella, Viande hachée L 800 DZD XL 1400 DZD"
+    },
+    "162": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-10.jpg",
+      "sourceLabel": "Crevette Sauce tomate, Crevettes fraiches, persil, mozzarella L 1200 DZD XL 2000 DZD"
+    },
+    "163": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.49_19aa7e82.jpg",
+      "sourceLabel": "Niçoise Sauce tomate, légumes, Thon, Olives, Mozzarella L 700 DZD XL 1400 DZD"
+    },
+    "164": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-159.jpg",
+      "sourceLabel": "Mexicaine Sauce tomate, viande hachée, Mais, Poivron, Paprika L 700 DZD XL 1200 DZD"
+    },
+    "165": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-158.jpg",
+      "sourceLabel": "Stracciatella Sauce tomate, Fromage stracciatella, Mozzarella, Tomate. L 700 DZD XL 1200 DZD"
+    },
+    "166": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-19.jpg",
+      "sourceLabel": "Mozzarella Cerise Sauce tomate, Tomate cerise, Mozzarella L 700 DZD XL 1200 DZD"
+    },
+    "167": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.48_aeb56e9e.jpg",
+      "sourceLabel": "Margaritta Sauce tomate, Mozarella L 300 DZD XL 700 DZD"
+    },
+    "168": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-158.jpg",
+      "sourceLabel": "Stracciatella Sauce tomate, Fromage stracciatella, Mozzarella, Tomate. L 700 DZD XL 1200 DZD"
+    },
+    "169": {
+      "menuPage": "https://braviox.com/pizza-sauce-tomate/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-19.jpg",
+      "sourceLabel": "Mozzarella Cerise Sauce tomate, Tomate cerise, Mozzarella L 700 DZD XL 1200 DZD"
+    },
+    "170": {
+      "menuPage": "https://braviox.com/menu-week-end/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/2-Personne-2500-3-Personnes-3500-4-Personnes-4500.jpg",
+      "sourceLabel": "Paella 1 Personne 2000 DZD 2 Personne 4000 DZD 3 Personne 6000 DZD"
+    },
+    "171": {
+      "menuPage": "https://braviox.com/menu-week-end/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/2-Personne-2500-3-Personnes-3500-4-Personnes-4500.jpg",
+      "sourceLabel": "Paella 1 Personne 2000 DZD 2 Personne 4000 DZD 3 Personne 6000 DZD"
+    },
+    "172": {
+      "menuPage": "https://braviox.com/menu-week-end/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/2-Personne-2500-3-Personnes-3500-4-Personnes-4500.jpg",
+      "sourceLabel": "Paella 1 Personne 2000 DZD 2 Personne 4000 DZD 3 Personne 6000 DZD"
+    },
+    "173": {
+      "menuPage": "https://braviox.com/menu-week-end/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Bourek-Crevette.jpg",
+      "sourceLabel": "Bourek Crevette 300 DZD"
+    },
+    "174": {
+      "menuPage": "https://braviox.com/menu-week-end/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Bourek-Fruit-de-mer.jpg",
+      "sourceLabel": "Bourek Fruit de Mer 300 DZD"
+    },
+    "175": {
+      "menuPage": "https://braviox.com/menu-week-end/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Soupe-de-poisson.jpg",
+      "sourceLabel": "Soupe de poisson 600 DZD"
+    },
+    "176": {
+      "menuPage": "https://braviox.com/menu-week-end/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.27_8d43cb92.jpg",
+      "sourceLabel": "Gratin Crevette 800 DZD"
+    },
+    "177": {
+      "menuPage": "https://braviox.com/menu-week-end/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/WhatsApp-Image-2025-04-04-a-13.12.59_e5df1ddd.jpg",
+      "sourceLabel": "Gratin Fruits de Mer 800 DZD"
+    },
+    "178": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-187-1.jpg",
+      "sourceLabel": "Jus d'orange 400 DZD"
+    },
+    "179": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-188.jpg",
+      "sourceLabel": "Jus de citron 400 DZD"
+    },
+    "180": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-189.jpg",
+      "sourceLabel": "Cocktail 500 DZD"
+    },
+    "181": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-190.jpg",
+      "sourceLabel": "Cocktail Mr Pasta 800 DZD"
+    },
+    "182": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-191.jpg",
+      "sourceLabel": "Jus Fraise 500 DZD"
+    },
+    "183": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-193.jpg",
+      "sourceLabel": "Jus de banane 500 DZD"
+    },
+    "184": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/delicious-pina-colada-cocktail-with-leaves.jpg",
+      "sourceLabel": "Jus d'ananas 400 DZD"
+    },
+    "185": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-192.jpg",
+      "sourceLabel": "Pina Colada 500 DZD"
+    },
+    "186": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/freshen-up-with-blue-hawaiian-soda.jpg",
+      "sourceLabel": "Mojito Bleu 500 DZD"
+    },
+    "187": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/strawberry-mojito-with-lots-crushed-ice.jpg",
+      "sourceLabel": "Mojito Red 500 DZD"
+    },
+    "188": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-197.jpg",
+      "sourceLabel": "Mojito Black 500 DZD"
+    },
+    "189": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/231_340779_max.jpg",
+      "sourceLabel": "Mojito Mixé 400 DZD"
+    },
+    "190": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/mojito-recipe-with-simple-syrup-1.jpg",
+      "sourceLabel": "Mojito Mr Pasta 700 DZD"
+    },
+    "191": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-194.jpg",
+      "sourceLabel": "Milk Shake Banane 400 DZD"
+    },
+    "192": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-195.jpg",
+      "sourceLabel": "Milk Shake Caramel 400 DZD"
+    },
+    "193": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-196.jpg",
+      "sourceLabel": "Milk Shake Nutella 800 DZD"
+    },
+    "194": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/chocolate-milkshake-glass-selective-focus.jpg",
+      "sourceLabel": "Milke Shake Mordjene 500 DZD"
+    },
+    "195": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-198.jpg",
+      "sourceLabel": "El Mordjene 500 DZD"
+    },
+    "196": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-199.jpg",
+      "sourceLabel": "Nutella 800 DZD"
+    },
+    "197": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-200.jpg",
+      "sourceLabel": "Banane 500 DZD"
+    },
+    "198": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-201.jpg",
+      "sourceLabel": "Fruits 500 DZD"
+    },
+    "199": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-201.jpg",
+      "sourceLabel": "Fruits 500 DZD"
+    },
+    "200": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-207.jpg",
+      "sourceLabel": "Fondant au chocolat 500 DZD"
+    },
+    "201": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-206.jpg",
+      "sourceLabel": "Mousse au chocolat 300 DZD"
+    },
+    "202": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-205.jpg",
+      "sourceLabel": "Créme Brulée 300 DZD"
+    },
+    "203": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-204.jpg",
+      "sourceLabel": "Cheese Boom 500 DZD"
+    },
+    "204": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-203.jpg",
+      "sourceLabel": "Flan Venezualian 350 DZD"
+    },
+    "205": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-186.jpg",
+      "sourceLabel": "San Sebastian 500 DZD"
+    },
+    "206": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-185.jpg",
+      "sourceLabel": "Tiramisu 300 DZD"
+    },
+    "207": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-209.jpg",
+      "sourceLabel": "Café L'Or 200 DZD"
+    },
+    "208": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-209.jpg",
+      "sourceLabel": "Café L'Or 200 DZD"
+    },
+    "209": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-210.jpg",
+      "sourceLabel": "iced Coffee 300 DZD"
+    },
+    "210": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-211.jpg",
+      "sourceLabel": "Coffee with milk 200 DZD"
+    },
+    "211": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-212.jpg",
+      "sourceLabel": "Cappuccino 300 DZD"
+    },
+    "212": {
+      "menuPage": "https://braviox.com/jus-desserts/",
+      "image": "https://braviox.com/wp-content/uploads/2026/05/Groupe-de-masques-213.jpg",
+      "sourceLabel": "Thé infusion 100 DZD"
+    }
+  }
+}

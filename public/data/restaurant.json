@@ -1,0 +1,25 @@
+{
+  "name": "Mr Pasta",
+  "nameAr": "مطعم مستر باسطا",
+  "tagline": "Restaurant de gastronomie italienne à Sétif",
+  "taglineAr": "مطعم متخصص في المأكولات الإيطالية بسطيف",
+  "phoneDisplay": "0556 52 16 89",
+  "phoneInternational": "+213556521689",
+  "email": "mrpastasetif@gmail.com",
+  "address": "5CPR+327, Avenue du 1er Novembre, Sétif",
+  "addressAr": "5CPR+327، شارع أول نوفمبر، سطيف",
+  "mapsUrl": "https://maps.app.goo.gl/CFT8iTQunTVEHa4A9",
+  "latitude": 36.1850245,
+  "longitude": 5.4402485,
+  "hours": {
+    "opens": "11:30",
+    "closes": "23:00",
+    "days": "Tous les jours",
+    "daysAr": "كل أيام الأسبوع"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/mrpasta19/",
+    "facebook": "https://www.facebook.com/mrpasta19/"
+  },
+  "sourceChecked": "2026-07-14"
+}

@@ -21,6 +21,9 @@ jobs:
       - name: Install Node Dependencies
         run: npm ci
 
+      - name: Copy Data Folder to Public
+        run: mkdir -p public/data && cp -r data/* public/data/
+
       - name: Sync Capacitor Web Assets
         run: npx cap sync android
 
