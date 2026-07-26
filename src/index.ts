@@ -212,30 +212,42 @@ app.get('/api/restaurant', async (c) => {
 
 // --- Admin Authentication Endpoints ---
 
-// POST /api/admin/login
+// POST /api/admin/login (Supports single password or username+password)
 app.post('/api/admin/login', async (c) => {
-  const body = await c.req.json().catch(() => ({}));
-  const { username, password } = body;
+  const { username, password } = await c.req.json().catch(() => ({}));
   
-  if (!username || !password) {
-    return c.json({ error: 'Username and password are required' }, 400);
+  if (!password) {
+    return c.json({ error: 'Mot de passe requis' }, 400);
+  }
+
+  const { results: admins } = await c.env.DB.prepare('SELECT * FROM admins').all<any>();
+  if (!admins || !admins.length) {
+    return c.json({ error: 'Accès administrateur non configuré' }, 500);
+  }
+
+  if (username && String(username).trim()) {
+    const cleanUsername = String(username).trim();
+    const user = admins.find(a => a.username === cleanUsername);
+    if (!user) return c.json({ error: 'Mot de passe incorrect' }, 401);
+
+    const computedHash = await hashPassword(password, user.salt);
+    if (computedHash !== user.password_hash) {
+      return c.json({ error: 'Mot de passe incorrect' }, 401);
+    }
+    const token = await createToken({ sub: user.id, username: user.username }, getJwtSecret(c.env));
+    return c.json({ success: true, token, username: user.username });
+  }
+
+  // Single-password login mode
+  for (const user of admins) {
+    const computedHash = await hashPassword(password, user.salt);
+    if (computedHash === user.password_hash) {
+      const token = await createToken({ sub: user.id, username: user.username }, getJwtSecret(c.env));
+      return c.json({ success: true, token, username: user.username });
+    }
   }
   
-  const user = await c.env.DB.prepare(
-    'SELECT * FROM admins WHERE username = ?'
-  ).bind(String(username).trim()).first<any>();
-  
-  if (!user) {
-    return c.json({ error: 'Invalid credentials' }, 401);
-  }
-  
-  const computedHash = await hashPassword(password, user.salt);
-  if (computedHash !== user.password_hash) {
-    return c.json({ error: 'Invalid credentials' }, 401);
-  }
-  
-  const token = await createToken({ sub: user.id, username: user.username }, getJwtSecret(c.env));
-  return c.json({ success: true, token, username: user.username });
+  return c.json({ error: 'Mot de passe incorrect' }, 401);
 });
 
 // GET /api/admin/me
