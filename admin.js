@@ -564,6 +564,44 @@
     }
   }
 
+  async function toggleDishAvailability(id, isAvailable) {
+    try {
+      const res = await apiFetch(`/api/admin/dishes/${id}/toggle`, {
+        method: 'PATCH',
+        body: { available: isAvailable }
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        console.warn('Remote toggle returned error:', data.error);
+      }
+      const dish = state.dishes.find(d => d.id === Number(id));
+      if (dish) dish.available = isAvailable;
+      updateStats();
+    } catch (err) {
+      console.warn('Network toggle failed, applying local update:', err);
+      const dish = state.dishes.find(d => d.id === Number(id));
+      if (dish) dish.available = isAvailable;
+      updateStats();
+    }
+  }
+
+  async function deleteDish(id) {
+    if (!confirm('Voulez-vous vraiment supprimer ce plat ?')) return;
+    try {
+      const res = await apiFetch(`/api/admin/dishes/${id}`, { method: 'DELETE' });
+      if (res.ok) {
+        state.dishes = state.dishes.filter(d => d.id !== Number(id));
+        updateStats();
+        renderDishesTable();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(`Erreur: ${data.error || 'Échec de la suppression'}`);
+      }
+    } catch (err) {
+      alert(`Erreur: ${err.message}`);
+    }
+  }
+
   // --- Restaurant Info ---
   async function loadRestaurantInfo() {
     try {
