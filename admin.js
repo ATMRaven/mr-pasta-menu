@@ -791,10 +791,28 @@
     }
   }
 
+  function setupCapacitorBackButton() {
+    const App = window.Capacitor?.Plugins?.App;
+    if (!App) return;
+
+    App.addListener('backButton', () => {
+      if (els.dishModal && !els.dishModal.hidden) {
+        closeDishModal();
+        return;
+      }
+      if (els.galleryModal && !els.galleryModal.hidden) {
+        closeGalleryModal();
+        return;
+      }
+      window.location.href = 'index.html';
+    });
+  }
+
   // --- Init ---
   document.addEventListener('DOMContentLoaded', () => {
     bindEvents();
     checkAuth();
+    setupCapacitorBackButton();
     if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
       navigator.serviceWorker.register('./sw.js').catch(() => {});
     }

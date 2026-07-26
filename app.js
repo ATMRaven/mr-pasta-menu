@@ -403,10 +403,16 @@
     state.currentLayer = layer;
     els.backdrop.hidden = false;
     requestAnimationFrame(() => els.backdrop.classList.add('visible'));
-    layer.classList.add(layer.classList.contains('drawer') ? 'open' : 'open');
+    layer.classList.add('open');
     layer.setAttribute('aria-hidden', 'false');
     document.body.classList.add('layer-open');
     window.setTimeout(() => $('.close-layer', layer)?.focus(), 80);
+
+    try {
+      if (!history.state?.modalOpen) {
+        history.pushState({ modalOpen: true }, '');
+      }
+    } catch (_) {}
   }
 
   function closeLayer(restore = true) {
@@ -419,6 +425,26 @@
     window.setTimeout(() => { if (!state.currentLayer) els.backdrop.hidden = true; }, 320);
     state.currentLayer = null;
     if (restore) state.restoreFocus?.focus?.();
+  }
+
+  function setupCapacitorBackButton() {
+    const App = window.Capacitor?.Plugins?.App;
+    if (!App) return;
+
+    App.addListener('backButton', () => {
+      if (state.currentLayer) {
+        closeLayer();
+        return;
+      }
+
+      const now = Date.now();
+      if (state.lastBackTap && now - state.lastBackTap < 2000) {
+        App.exitApp();
+      } else {
+        state.lastBackTap = now;
+        toast(state.lang === 'ar' ? 'اضغط مرة أخرى للخروج' : 'Appuyez à nouveau pour quitter');
+      }
+    });
   }
 
   function toast(message) {
@@ -631,6 +657,10 @@
       renderCart();
       setupLiveSync();
       checkLiveUpdate();
+      setupCapacitorBackButton();
+      window.addEventListener('popstate', () => {
+        if (state.currentLayer) closeLayer(false);
+      });
       els.itemImage.addEventListener('error', () => { els.itemImage.src = 'assets/dish-placeholder.svg'; });
       window.setTimeout(() => els.loading.classList.add('done'), 250);
       window.setTimeout(() => els.loading.remove(), 850);
