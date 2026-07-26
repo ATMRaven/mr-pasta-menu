@@ -367,30 +367,55 @@
     } catch (_) { toast(copy[state.lang].qrError); }
   }
 
+  function dataURLtoBlob(dataurl) {
+    try {
+      const arr = dataurl.split(',');
+      const mime = arr[0].match(/:(.*?);/)[1];
+      const bstr = atob(arr[1]);
+      let n = bstr.length;
+      const u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new Blob([u8arr], { type: mime });
+    } catch (_) { return null; }
+  }
+
   async function downloadQR() {
     const canvas = $('canvas', els.qrCode);
     if (!canvas) return;
+    hapticTap('medium');
     const dataUrl = canvas.toDataURL('image/png');
     const filename = `mr-pasta-${els.qrOrderId.textContent.replace(/[^a-z0-9]/gi, '')}.png`;
 
     try {
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
-      const file = new File([blob], filename, { type: 'image/png' });
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: 'Mr Pasta QR Code',
-          text: 'Order QR Code'
-        });
+      const blob = dataURLtoBlob(dataUrl);
+      if (blob && navigator.share && navigator.canShare) {
+        const file = new File([blob], filename, { type: 'image/png' });
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: 'Mr Pasta QR Code',
+            text: 'Code QR de commande Mr Pasta'
+          });
+          return;
+        }
+      }
+    } catch (_) {}
+
+    // Direct Image view fallback for mobile save
+    try {
+      const imgWin = window.open('');
+      if (imgWin) {
+        imgWin.document.write(`<title>${filename}</title><body style="margin:0;display:grid;place-items:center;min-height:100vh;background:#0a1911;color:#fff;font-family:sans-serif;text-align:center;"><img src="${dataUrl}" style="max-width:85vw;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.5);"><p style="margin-top:1.5rem;font-size:1.1rem;">Appuyez longuement sur l'image pour l'enregistrer dans vos photos</p></body>`);
         return;
       }
     } catch (_) {}
 
+    // Browser anchor download fallback
     const link = document.createElement('a');
     link.download = filename;
     link.href = dataUrl;
-    link.target = '_blank';
     document.body.appendChild(link);
     link.click();
     setTimeout(() => document.body.removeChild(link), 200);

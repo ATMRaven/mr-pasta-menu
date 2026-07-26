@@ -26,6 +26,7 @@
   "devDependencies": {
     "@capacitor/cli": "^8.4.2",
     "@cloudflare/workers-types": "^4.20241230.0",
+    "mcp-ionic-cli": "^1.0.1",
     "typescript": "^5.7.2",
     "wrangler": "^3.99.0"
   }

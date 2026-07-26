@@ -31,8 +31,8 @@
 
   // DOM Elements Cache
   const els = {
-    loginView: document.getElementById('loginView'),
-    dashboardView: document.getElementById('dashboardView'),
+    loginView: document.getElementById('loginSection') || document.getElementById('loginView'),
+    dashboardView: document.getElementById('dashboardSection') || document.getElementById('dashboardView'),
     loginForm: document.getElementById('loginForm'),
     loginUsername: document.getElementById('loginUsername'),
     loginPassword: document.getElementById('loginPassword'),

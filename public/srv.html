@@ -48,8 +48,13 @@
         stopCameraStream();
         const videoEl = $('#video');
 
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          toast("Appareil photo en direct indisponible. Sélectionnez une image ou photo.", "warn");
+          $('#fileInput')?.click();
+          return;
+        }
+
         try {
-          // Native HTML5 MediaStream initialization
           try {
             mediaStream = await navigator.mediaDevices.getUserMedia({
               video: { facingMode: { ideal: 'environment' } },
@@ -66,7 +71,6 @@
           
           await videoEl.play();
 
-          // QrScanner continuous frame decoding
           scanTimer = setInterval(async () => {
             if (!videoEl || videoEl.paused || videoEl.ended || !videoEl.videoWidth) return;
             try {
@@ -81,7 +85,8 @@
         } catch(e) {
           closeScanner();
           console.error(e);
-          toast("Accès caméra impossible: " + (e.message || e),'error');
+          toast("Choix image/appareil photo activé", "warn");
+          $('#fileInput')?.click();
         }
       }
 
