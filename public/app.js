@@ -447,7 +447,33 @@
     });
   }
 
+  function hapticTap(style = 'light') {
+    try {
+      const Haptics = window.Capacitor?.Plugins?.Haptics;
+      if (Haptics) Haptics.impact({ style: style.toUpperCase() });
+    } catch (_) {}
+  }
+
+  function setupStatusBar() {
+    try {
+      const StatusBar = window.Capacitor?.Plugins?.StatusBar;
+      if (StatusBar) {
+        StatusBar.setStyle({ style: 'DARK' });
+        StatusBar.setBackgroundColor({ color: '#0a1911' });
+        StatusBar.setOverlaysWebView({ overlay: false });
+      }
+    } catch (_) {}
+  }
+
+  function hideSplashScreen() {
+    try {
+      const SplashScreen = window.Capacitor?.Plugins?.SplashScreen;
+      if (SplashScreen) SplashScreen.hide();
+    } catch (_) {}
+  }
+
   function toast(message) {
+    hapticTap('light');
     const node = document.createElement('div');
     node.className = 'toast';
     node.textContent = message;
@@ -658,6 +684,8 @@
       setupLiveSync();
       checkLiveUpdate();
       setupCapacitorBackButton();
+      setupStatusBar();
+      hideSplashScreen();
       window.addEventListener('popstate', () => {
         if (state.currentLayer) closeLayer(false);
       });
