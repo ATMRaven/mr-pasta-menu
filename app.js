@@ -705,10 +705,14 @@
       let menuData = null;
       let restaurantData = null;
 
+      const apiBase = (window.location.protocol === 'capacitor:' || window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+        ? 'https://mr-pasta-menu.atmr.workers.dev'
+        : '';
+
       try {
         const [menuResponse, restaurantResponse] = await Promise.all([
-          fetch('/api/menu', { cache: 'no-store' }),
-          fetch('/api/restaurant', { cache: 'no-store' })
+          fetch(`${apiBase}/api/menu`, { cache: 'no-store' }),
+          fetch(`${apiBase}/api/restaurant`, { cache: 'no-store' })
         ]);
         if (menuResponse.ok && restaurantResponse.ok) {
           menuData = await menuResponse.json();

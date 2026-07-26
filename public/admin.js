@@ -182,7 +182,7 @@
   }
 
   const API_BASE = (window.location.protocol === 'capacitor:' || window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-    ? 'https://mr-pasta-menu.braviox.workers.dev'
+    ? 'https://mr-pasta-menu.atmr.workers.dev'
     : '';
 
   function getApiUrl(path) {
