@@ -181,6 +181,14 @@
     els.galleryModal.classList.remove('active');
   }
 
+  const API_BASE = (window.location.protocol === 'capacitor:' || window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'https://mr-pasta-menu.braviox.workers.dev'
+    : '';
+
+  function getApiUrl(path) {
+    return path.startsWith('http') ? path : `${API_BASE}${path}`;
+  }
+
   // Helper for authenticated API calls
   async function apiFetch(url, options = {}) {
     options.headers = options.headers || {};
@@ -191,7 +199,8 @@
       options.headers['Content-Type'] = 'application/json';
       options.body = JSON.stringify(options.body);
     }
-    const response = await fetch(url, options);
+    const targetUrl = getApiUrl(url);
+    const response = await fetch(targetUrl, options);
     if (response.status === 401) {
       logout();
       throw new Error('Session expirée');
@@ -203,28 +212,16 @@
   async function login(username, password) {
     els.loginError.style.display = 'none';
     try {
-      let data = null;
-      try {
-        const res = await fetch('/api/admin/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password })
-        });
-        const contentType = res.headers.get('content-type') || '';
-        if (contentType.includes('application/json')) {
-          data = await res.json();
-        }
-      } catch (e) {
-        console.warn('API login call failed, attempting local fallback', e);
-      }
+      const res = await fetch(getApiUrl('/api/admin/login'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
 
-      // Offline / Local App Auth Fallback
-      if (!data && (username === 'admin' || username === 'mrpasta') && (password === 'admin' || password === 'mrpasta19' || password === '123456')) {
-        data = { token: 'local-admin-token', username: username };
-      }
+      const data = await res.json().catch(() => null);
 
-      if (!data || !data.token) {
-        throw new Error('Identifiants incorrects (Essayer: admin / mrpasta19)');
+      if (!res.ok || !data || !data.token) {
+        throw new Error(data?.error || 'Nom d\'utilisateur ou mot de passe incorrect.');
       }
 
       state.token = data.token;
@@ -234,7 +231,7 @@
 
       initDashboard();
     } catch (err) {
-      els.loginError.textContent = err.message;
+      els.loginError.textContent = err.message || 'Erreur de connexion au serveur.';
       els.loginError.style.display = 'block';
     }
   }
@@ -244,8 +241,12 @@
     state.user = null;
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
-    els.dashboardView.style.display = 'none';
-    els.loginView.style.display = 'flex';
+    const dashboard = els.dashboardView || document.getElementById('dashboardSection');
+    const loginView = els.loginView || document.getElementById('loginSection');
+    if (dashboard) dashboard.style.display = 'none';
+    if (loginView) loginView.style.display = 'flex';
+    if (els.loginPassword) els.loginPassword.value = '';
+    if (els.loginError) els.loginError.style.display = 'none';
   }
 
   async function checkAuth() {
@@ -253,20 +254,15 @@
       logout();
       return;
     }
-    if (state.token === 'local-admin-token') {
-      initDashboard();
-      return;
-    }
     try {
       const res = await apiFetch('/api/admin/verify');
-      const contentType = res.headers.get('content-type') || '';
-      if (res.ok && contentType.includes('application/json')) {
+      if (res.ok) {
         initDashboard();
       } else {
-        initDashboard(); // Keep local dashboard if offline
+        logout();
       }
     } catch (_) {
-      initDashboard(); // Keep local dashboard if offline
+      logout();
     }
   }
 

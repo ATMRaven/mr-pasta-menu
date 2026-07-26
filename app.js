@@ -398,27 +398,23 @@
             title: 'Mr Pasta QR Code',
             text: 'Code QR de commande Mr Pasta'
           });
+          toast(state.lang === 'ar' ? 'تمت مشاركة رمز QR' : 'QR Code partagé');
           return;
         }
       }
     } catch (_) {}
 
-    // Direct Image view fallback for mobile save
     try {
-      const imgWin = window.open('');
-      if (imgWin) {
-        imgWin.document.write(`<title>${filename}</title><body style="margin:0;display:grid;place-items:center;min-height:100vh;background:#0a1911;color:#fff;font-family:sans-serif;text-align:center;"><img src="${dataUrl}" style="max-width:85vw;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.5);"><p style="margin-top:1.5rem;font-size:1.1rem;">Appuyez longuement sur l'image pour l'enregistrer dans vos photos</p></body>`);
-        return;
-      }
-    } catch (_) {}
-
-    // Browser anchor download fallback
-    const link = document.createElement('a');
-    link.download = filename;
-    link.href = dataUrl;
-    document.body.appendChild(link);
-    link.click();
-    setTimeout(() => document.body.removeChild(link), 200);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => document.body.removeChild(link), 200);
+      toast(state.lang === 'ar' ? 'تم حفظ رمز QR' : 'QR Code enregistré');
+    } catch (_) {
+      toast(state.lang === 'ar' ? 'اضغط مطولاً على الصورة لحفظها' : 'Appuyez longuement sur le QR pour enregistrer');
+    }
   }
 
   function openLayer(layer) {
