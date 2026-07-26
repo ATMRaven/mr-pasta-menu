@@ -388,6 +388,38 @@
     const dataUrl = canvas.toDataURL('image/png');
     const filename = `mr-pasta-${els.qrOrderId.textContent.replace(/[^a-z0-9]/gi, '')}.png`;
 
+    // 1. Try Capacitor Filesystem plugin to write directly into device Pictures / Storage
+    try {
+      const Filesystem = window.Capacitor?.Plugins?.Filesystem;
+      if (Filesystem) {
+        const base64Data = dataUrl.replace(/^data:image\/png;base64,/, '');
+        await Filesystem.writeFile({
+          path: `Download/${filename}`,
+          data: base64Data,
+          directory: 'EXTERNAL_STORAGE',
+          recursive: true
+        });
+        toast(state.lang === 'ar' ? 'تم حفظ رمز QR في المعرض' : 'QR Code enregistré dans la Galerie !');
+        return;
+      }
+    } catch (_) {
+      try {
+        const Filesystem = window.Capacitor?.Plugins?.Filesystem;
+        if (Filesystem) {
+          const base64Data = dataUrl.replace(/^data:image\/png;base64,/, '');
+          await Filesystem.writeFile({
+            path: filename,
+            data: base64Data,
+            directory: 'DOCUMENTS',
+            recursive: true
+          });
+          toast(state.lang === 'ar' ? 'تم حفظ رمز QR في المستندات' : 'QR Code enregistré dans vos Documents !');
+          return;
+        }
+      } catch (_) {}
+    }
+
+    // 2. Try Native Web Share API
     try {
       const blob = dataURLtoBlob(dataUrl);
       if (blob && navigator.share && navigator.canShare) {
@@ -404,6 +436,7 @@
       }
     } catch (_) {}
 
+    // 3. Fallback anchor link
     try {
       const link = document.createElement('a');
       link.download = filename;
