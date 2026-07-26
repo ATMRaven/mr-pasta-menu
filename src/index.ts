@@ -3,6 +3,7 @@ import { cors } from 'hono/cors';
 
 export interface Env {
   DB: D1Database;
+  ASSETS: Fetcher;
   JWT_SECRET?: string;
 }
 
@@ -15,6 +16,15 @@ app.use('*', cors({
   exposeHeaders: ['Content-Type', 'ETag', 'Content-Disposition'],
   maxAge: 86400
 }));
+
+// Pretty URL aliases (/admin -> admin.html, /srv -> srv.html)
+app.get('/admin', async (c) => {
+  return c.env.ASSETS.fetch(new Request(new URL('/admin.html', c.req.url)));
+});
+
+app.get('/srv', async (c) => {
+  return c.env.ASSETS.fetch(new Request(new URL('/srv.html', c.req.url)));
+});
 
 const DEFAULT_JWT_SECRET = 'mr-pasta-jwt-secret-key-2026';
 
