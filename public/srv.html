@@ -13,7 +13,7 @@
   </style>
 </head>
 <body>
-  <header class="topbar"><div class="shell"><div class="brand"><img src="assets/logo.png" alt="Mr Pasta"><span>Interface serveur</span></div><div class="live"><i></i>Prêt à scanner</div></div></header>
+  <header class="topbar"><div class="shell" style="padding-top: env(safe-area-inset-top, 0px);"><div class="brand"><img src="assets/logo.png" alt="Mr Pasta"><span>Interface serveur</span></div><a href="index.html" class="btn" style="margin-inline-start:auto;text-decoration:none;font-size:0.85rem;padding:0.4rem 0.8rem;background:rgba(255,255,255,0.15);color:#fff;border-radius:8px;display:inline-flex;align-items:center;gap:0.3rem;">🌐 Menu</a><div class="live"><i></i>Prêt à scanner</div></div></header>
   <main class="shell">
     <section class="intro"><div><p class="eyebrow">Gestion locale</p><h1>Commandes scannées</h1><p>Les commandes restent enregistrées uniquement sur cet appareil.</p></div><div class="actions"><button class="btn primary" id="scanBtn">📷 Scanner</button><label class="btn" for="fileInput" style="display:inline-flex;align-items:center">🖼️ Lire une image</label><input id="fileInput" class="hidden" type="file" accept="image/*"><button class="btn danger" id="clearBtn">Vider la liste</button></div></section>
     <section class="stats"><div class="stat"><span>En attente</span><strong id="pendingCount">0</strong></div><div class="stat"><span>Terminées</span><strong id="doneCount">0</strong></div><div class="stat"><span>Total actif</span><strong id="activeTotal">0 DA</strong></div></section>

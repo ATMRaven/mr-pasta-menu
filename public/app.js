@@ -367,13 +367,33 @@
     } catch (_) { toast(copy[state.lang].qrError); }
   }
 
-  function downloadQR() {
+  async function downloadQR() {
     const canvas = $('canvas', els.qrCode);
     if (!canvas) return;
+    const dataUrl = canvas.toDataURL('image/png');
+    const filename = `mr-pasta-${els.qrOrderId.textContent.replace(/[^a-z0-9]/gi, '')}.png`;
+
+    try {
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
+      const file = new File([blob], filename, { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: 'Mr Pasta QR Code',
+          text: 'Order QR Code'
+        });
+        return;
+      }
+    } catch (_) {}
+
     const link = document.createElement('a');
-    link.download = `mr-pasta-${els.qrOrderId.textContent.replace(/[^a-z0-9]/gi, '')}.png`;
-    link.href = canvas.toDataURL('image/png');
+    link.download = filename;
+    link.href = dataUrl;
+    link.target = '_blank';
+    document.body.appendChild(link);
     link.click();
+    setTimeout(() => document.body.removeChild(link), 200);
   }
 
   function openLayer(layer) {
