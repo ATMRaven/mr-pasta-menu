@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Mr. Pasta Menu</string>
+    <string name="title_activity_main">Mr. Pasta Menu</string>
+    <string name="package_name">com.mrpasta.menu</string>
+    <string name="custom_url_scheme">com.mrpasta.menu</string>
+</resources>

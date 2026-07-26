@@ -1,0 +1,6 @@
+{
+  "appId": "com.mrpasta.menu",
+  "appName": "Mr. Pasta Menu",
+  "webDir": "public",
+  "bundledWebRuntime": false
+}
