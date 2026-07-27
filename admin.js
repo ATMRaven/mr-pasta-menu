@@ -72,7 +72,7 @@
     openGalleryBtn: document.getElementById('openGalleryBtn'),
     imageFileInput: document.getElementById('imageFileInput'),
     uploadStatusText: document.getElementById('uploadStatusText'),
-    sizesList: document.getElementById('sizesList'),
+    sizesList: document.getElementById('sizesList') || document.getElementById('sizesContainer'),
     addSizeBtn: document.getElementById('addSizeBtn'),
     closeDishModal: document.getElementById('closeDishModal'),
     cancelDishModal: document.getElementById('cancelDishModal'),
@@ -467,6 +467,7 @@
   }
 
   function renderSizesList(sizes = []) {
+    if (!els.sizesList) return;
     els.sizesList.innerHTML = sizes.map((size, index) => `
       <div class="size-row" style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;">
         <input type="text" class="form-control size-name" placeholder="Nom taille (ex: Moyenne)" value="${escapeHtml(size.name || '')}" style="flex: 2;">
@@ -481,6 +482,7 @@
   }
 
   function addSizeRow() {
+    if (!els.sizesList) return;
     const div = document.createElement('div');
     div.className = 'size-row';
     div.style.cssText = 'display: flex; gap: 0.5rem; margin-bottom: 0.5rem; align-items: center;';
