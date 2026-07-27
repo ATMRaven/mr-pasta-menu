@@ -57,9 +57,9 @@
 
     // Dish Modal
     dishModal: document.getElementById('dishModal'),
-    modalTitle: document.getElementById('modalTitle'),
+    modalTitle: document.getElementById('modalTitle') || document.getElementById('dishModalTitle'),
     dishForm: document.getElementById('dishForm'),
-    dishIdInput: document.getElementById('dishIdInput'),
+    dishIdInput: document.getElementById('dishIdInput') || document.getElementById('dishId'),
     dishCategory: document.getElementById('dishCategory'),
     dishNameFr: document.getElementById('dishNameFr'),
     dishNameAr: document.getElementById('dishNameAr'),
@@ -86,12 +86,12 @@
 
     // Restaurant Info Form
     restaurantForm: document.getElementById('restaurantForm'),
-    restPhone: document.getElementById('restPhone'),
-    restPhone2: document.getElementById('restPhone2'),
+    restPhone: document.getElementById('restPhone') || document.getElementById('restPhoneDisplay'),
+    restPhone2: document.getElementById('restPhone2') || document.getElementById('restPhoneInt'),
     restAddress: document.getElementById('restAddress'),
-    restHours: document.getElementById('restHours'),
-    restInsta: document.getElementById('restInsta'),
-    restFb: document.getElementById('restFb'),
+    restHours: document.getElementById('restHours') || document.getElementById('restOpens'),
+    restInsta: document.getElementById('restInsta') || document.getElementById('restInstagram'),
+    restFb: document.getElementById('restFb') || document.getElementById('restFacebook'),
     restIsOpen: document.getElementById('restIsOpen'),
 
     // Security Form
@@ -101,8 +101,8 @@
     confirmPassword: document.getElementById('confirmPassword'),
     passwordError: document.getElementById('passwordError'),
     createUserForm: document.getElementById('createUserForm'),
-    newUsername: document.getElementById('newUsername'),
-    newUserPassword: document.getElementById('newUserPassword'),
+    newUsername: document.getElementById('newUsername') || document.getElementById('newAdminUsername'),
+    newUserPassword: document.getElementById('newUserPassword') || document.getElementById('newAdminPassword'),
     createUserError: document.getElementById('createUserError'),
 
     // Backup & Restore
@@ -436,30 +436,30 @@
 
   // --- Dish Modal & Form ---
   function openDishModal(dish = null) {
-    els.uploadStatusText.textContent = '';
+    if (els.uploadStatusText) els.uploadStatusText.textContent = '';
     if (dish) {
       state.currentEditingDishId = dish.id;
-      els.modalTitle.textContent = '✏️ Modifier le Plat';
-      els.dishIdInput.value = dish.id;
-      els.dishCategory.value = dish.category;
-      els.dishNameFr.value = dish.name || '';
-      els.dishNameAr.value = dish.nameAr || '';
-      els.dishDescFr.value = dish.desc || '';
-      els.dishDescAr.value = dish.descAr || '';
-      els.dishPrice.value = dish.price || 0;
-      els.dishImage.value = dish.image || '';
-      els.dishImagePreview.src = dish.image || 'assets/dish-placeholder.svg';
+      if (els.modalTitle) els.modalTitle.textContent = '✏️ Modifier le Plat';
+      if (els.dishIdInput) els.dishIdInput.value = dish.id;
+      if (els.dishCategory) els.dishCategory.value = dish.category;
+      if (els.dishNameFr) els.dishNameFr.value = dish.name || '';
+      if (els.dishNameAr) els.dishNameAr.value = dish.nameAr || '';
+      if (els.dishDescFr) els.dishDescFr.value = dish.desc || '';
+      if (els.dishDescAr) els.dishDescAr.value = dish.descAr || '';
+      if (els.dishPrice) els.dishPrice.value = dish.price || 0;
+      if (els.dishImage) els.dishImage.value = dish.image || '';
+      if (els.dishImagePreview) els.dishImagePreview.src = dish.image || 'assets/dish-placeholder.svg';
 
       renderSizesList(dish.sizes || []);
     } else {
       state.currentEditingDishId = null;
-      els.modalTitle.textContent = '➕ Ajouter un Nouveau Plat';
-      els.dishForm.reset();
-      els.dishIdInput.value = '';
-      els.dishImagePreview.src = 'assets/dish-placeholder.svg';
+      if (els.modalTitle) els.modalTitle.textContent = '➕ Ajouter un Nouveau Plat';
+      if (els.dishForm) els.dishForm.reset();
+      if (els.dishIdInput) els.dishIdInput.value = '';
+      if (els.dishImagePreview) els.dishImagePreview.src = 'assets/dish-placeholder.svg';
       renderSizesList([]);
     }
-    els.dishModal.classList.add('active');
+    if (els.dishModal) els.dishModal.classList.add('active');
   }
 
   function closeDishModal() {
@@ -586,16 +586,16 @@
   // --- Restaurant Info ---
   async function loadRestaurantInfo() {
     try {
-      const res = await fetch('/api/restaurant');
+      const res = await fetch(getApiUrl('/api/restaurant'));
       state.restaurant = await res.json();
 
-      els.restPhone.value = state.restaurant.phone || '';
-      els.restPhone2.value = state.restaurant.phone2 || '';
-      els.restAddress.value = state.restaurant.address || '';
-      els.restHours.value = state.restaurant.hours || '';
-      els.restInsta.value = state.restaurant.instagram || '';
-      els.restFb.value = state.restaurant.facebook || '';
-      els.restIsOpen.checked = Boolean(state.restaurant.isOpen);
+      if (els.restPhone) els.restPhone.value = state.restaurant.phone || state.restaurant.phoneDisplay || '';
+      if (els.restPhone2) els.restPhone2.value = state.restaurant.phone2 || state.restaurant.phoneInternational || '';
+      if (els.restAddress) els.restAddress.value = state.restaurant.address || '';
+      if (els.restHours) els.restHours.value = typeof state.restaurant.hours === 'object' ? `${state.restaurant.hours.opens || '11:30'} - ${state.restaurant.hours.closes || '23:00'}` : (state.restaurant.hours || '');
+      if (els.restInsta) els.restInsta.value = state.restaurant.instagram || state.restaurant.social?.instagram || '';
+      if (els.restFb) els.restFb.value = state.restaurant.facebook || state.restaurant.social?.facebook || '';
+      if (els.restIsOpen) els.restIsOpen.checked = Boolean(state.restaurant.isOpen);
     } catch (err) {
       console.error('Erreur info restaurant', err);
     }
