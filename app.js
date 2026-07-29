@@ -163,12 +163,24 @@
 
   function filteredMenu() {
     const query = normalize(state.query);
-    return state.menu.filter(item => {
+    const sortBy = state.sortBy || 'newest';
+
+    const items = state.menu.filter(item => {
       if (item.available === false) return false;
       if (state.category !== 'all' && item.category !== state.category) return false;
       if (!query) return true;
       const haystack = normalize([item.name, item.nameAr, item.desc, item.descAr, categoryLabel(item.category), groupLabel(item.group)].join(' '));
       return haystack.includes(query);
+    });
+
+    return [...items].sort((a, b) => {
+      if (sortBy === 'newest') return Number(b.id) - Number(a.id);
+      if (sortBy === 'oldest') return Number(a.id) - Number(b.id);
+      if (sortBy === 'price_asc') return Number(a.price) - Number(b.price);
+      if (sortBy === 'price_desc') return Number(b.price) - Number(a.price);
+      if (sortBy === 'name') return String(a.name).localeCompare(String(b.name));
+      if (sortBy === 'popular') return (b.isPopular ? 1 : 0) - (a.isPopular ? 1 : 0) || Number(b.id) - Number(a.id);
+      return Number(b.id) - Number(a.id);
     });
   }
 
@@ -176,10 +188,12 @@
     const name = getText(item, 'name');
     const secondary = state.lang === 'ar' ? item.name : item.nameAr;
     const desc = getText(item, 'desc');
+    const popularTag = item.isPopular ? `<span style="position: absolute; top: 10px; left: 10px; z-index: 3; background: rgba(245, 158, 11, 0.9); color: #000; font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.55rem; border-radius: 12px; backdrop-filter: blur(4px);">⭐ ${state.lang === 'ar' ? 'مميز' : 'Populaire'}</span>` : '';
     return `<article class="dish-card" data-id="${item.id}">
       <button type="button" class="dish-open" aria-label="${escapeHtml(name)} — ${escapeHtml(priceLabel(item))}">
-        <div class="dish-media">
+        <div class="dish-media" style="position: relative;">
           <img src="${escapeHtml(item.image)}" alt="${escapeHtml(name)}" width="720" height="540" loading="lazy" decoding="async">
+          ${popularTag}
           <span class="dish-price">${escapeHtml(priceLabel(item))}</span>
         </div>
         <div class="dish-content">
@@ -554,6 +568,7 @@
     Object.assign(els, {
       loading: $('#loadingScreen'), openStatus: $('#openStatus'), dishCount: $('#dishCount'),
       categoryNav: $('#categoryNav'), searchInput: $('#searchInput'), clearSearch: $('#clearSearch'),
+      menuSortSelect: $('#menuSortSelect'),
       menuTools: $('#menuTools'), menuContent: $('#menuContent'), resultsText: $('#resultsText'),
       resetFilters: $('#resetFilters'), emptyState: $('#emptyState'), emptyReset: $('#emptyReset'),
       footerAddress: $('#footerAddress'), drawerAddress: $('#drawerAddress'),
@@ -579,6 +594,13 @@
       state.lang = button.dataset.lang === 'ar' ? 'ar' : 'fr';
       applyLanguage();
     }));
+
+    if (els.menuSortSelect) {
+      els.menuSortSelect.addEventListener('change', () => {
+        state.sortBy = els.menuSortSelect.value;
+        renderMenu();
+      });
+    }
 
     els.categoryNav.addEventListener('click', event => {
       const button = event.target.closest('[data-category]');

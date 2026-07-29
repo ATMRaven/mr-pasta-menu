@@ -137,9 +137,18 @@
       </div>
 
       <div class="menu-body shell">
-        <div class="results-meta">
-          <p id="resultsText" aria-live="polite">212 plats</p>
-          <button type="button" id="resetFilters" class="text-button" hidden data-i18n="reset">Réinitialiser</button>
+        <div class="results-meta" style="display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <p id="resultsText" aria-live="polite">212 plats</p>
+            <button type="button" id="resetFilters" class="text-button" hidden data-i18n="reset">Réinitialiser</button>
+          </div>
+          <select id="menuSortSelect" style="max-width: 210px; font-size: 0.85rem; padding: 0.35rem 0.75rem; border-radius: 20px; background: var(--bg-card, #12291d); color: var(--text, #fff); border: 1px solid var(--border, rgba(255,255,255,0.1)); cursor: pointer;">
+            <option value="newest">🆕 Nouveautés en premier</option>
+            <option value="popular">⭐ Populaires / Favoris</option>
+            <option value="price_asc">💲 Prix croissant</option>
+            <option value="price_desc">💰 Prix décroissant</option>
+            <option value="name">🔤 Nom (A-Z)</option>
+          </select>
         </div>
         <div id="menuContent" class="menu-content" aria-busy="true"></div>
         <div id="emptyState" class="empty-state" hidden>

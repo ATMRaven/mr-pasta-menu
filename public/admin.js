@@ -26,6 +26,7 @@
     restaurant: {},
     searchQuery: '',
     categoryFilter: 'all',
+    sortBy: 'newest',
     currentEditingDishId: null
   };
 
@@ -52,6 +53,7 @@
     // Dish List & Toolbar
     dishSearch: document.getElementById('dishSearch'),
     dishCategoryFilter: document.getElementById('dishCategoryFilter'),
+    dishSortFilter: document.getElementById('dishSortFilter'),
     addDishBtn: document.getElementById('addDishBtn'),
     dishesTableBody: document.getElementById('dishesTableBody'),
 
@@ -74,6 +76,7 @@
     uploadStatusText: document.getElementById('uploadStatusText'),
     sizesList: document.getElementById('sizesList') || document.getElementById('sizesContainer'),
     addSizeBtn: document.getElementById('addSizeBtn'),
+    dishIsPopular: document.getElementById('dishIsPopular'),
     closeDishModal: document.getElementById('closeDishModal'),
     cancelDishModal: document.getElementById('cancelDishModal'),
 
@@ -314,6 +317,7 @@
   function renderDishesTable() {
     const query = state.searchQuery.toLowerCase().trim();
     const category = state.categoryFilter;
+    const sortBy = state.sortBy || 'newest';
 
     const filtered = state.dishes.filter(dish => {
       const matchesCat = category === 'all' || dish.category === category;
@@ -322,7 +326,17 @@
       return matchesCat && matchesQuery;
     });
 
-    if (!filtered.length) {
+    const sorted = [...filtered].sort((a, b) => {
+      if (sortBy === 'newest') return Number(b.id) - Number(a.id);
+      if (sortBy === 'oldest') return Number(a.id) - Number(b.id);
+      if (sortBy === 'price_asc') return Number(a.price) - Number(b.price);
+      if (sortBy === 'price_desc') return Number(b.price) - Number(a.price);
+      if (sortBy === 'name') return String(a.name).localeCompare(String(b.name));
+      if (sortBy === 'popular') return (b.isPopular ? 1 : 0) - (a.isPopular ? 1 : 0) || Number(b.id) - Number(a.id);
+      return Number(b.id) - Number(a.id);
+    });
+
+    if (!sorted.length) {
       els.dishesTableBody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">Aucun plat ne correspond aux critères.</td></tr>`;
       const mobileCardsEl = document.getElementById('dishesMobileCards');
       if (mobileCardsEl) {
@@ -331,7 +345,7 @@
       return;
     }
 
-    els.dishesTableBody.innerHTML = filtered.map(dish => {
+    els.dishesTableBody.innerHTML = sorted.map(dish => {
       const categoryLabel = CATEGORY_NAMES[dish.category] || dish.category;
       let priceLabel = `${Number(dish.price).toLocaleString('fr-FR')} DA`;
       if (dish.sizes && dish.sizes.length) {
@@ -343,7 +357,7 @@
           <img src="${dish.image || 'assets/dish-placeholder.svg'}" class="dish-img" alt="${dish.name}" onerror="this.src='assets/dish-placeholder.svg'">
         </td>
         <td>
-          <div class="dish-title">${escapeHtml(dish.name)}</div>
+          <div class="dish-title">${escapeHtml(dish.name)} ${dish.isPopular ? '<span style="color:#f59e0b;font-size:0.85rem;" title="Plat Populaire">⭐</span>' : ''}</div>
           <div class="dish-arabic">${escapeHtml(dish.nameAr || '')}</div>
         </td>
         <td><span class="badge badge-success">${escapeHtml(categoryLabel)}</span></td>
@@ -363,7 +377,7 @@
 
     const mobileCardsEl = document.getElementById('dishesMobileCards');
     if (mobileCardsEl) {
-      mobileCardsEl.innerHTML = filtered.map(dish => {
+      mobileCardsEl.innerHTML = sorted.map(dish => {
         const categoryLabel = CATEGORY_NAMES[dish.category] || dish.category;
         let priceLabel = `${Number(dish.price).toLocaleString('fr-FR')} DA`;
         if (dish.sizes && dish.sizes.length) {
@@ -449,6 +463,7 @@
       if (els.dishPrice) els.dishPrice.value = dish.price || 0;
       if (els.dishImage) els.dishImage.value = dish.image || '';
       if (els.dishImagePreview) els.dishImagePreview.src = dish.image || 'assets/dish-placeholder.svg';
+      if (els.dishIsPopular) els.dishIsPopular.checked = Boolean(dish.isPopular);
 
       renderSizesList(dish.sizes || []);
     } else {
@@ -457,6 +472,7 @@
       if (els.dishForm) els.dishForm.reset();
       if (els.dishIdInput) els.dishIdInput.value = '';
       if (els.dishImagePreview) els.dishImagePreview.src = 'assets/dish-placeholder.svg';
+      if (els.dishIsPopular) els.dishIsPopular.checked = false;
       renderSizesList([]);
     }
     if (els.dishModal) els.dishModal.classList.add('active');
@@ -518,7 +534,8 @@
       descAr: els.dishDescAr.value.trim(),
       price: Number(els.dishPrice.value),
       image: els.dishImage.value.trim(),
-      sizes: collectSizesFromForm()
+      sizes: collectSizesFromForm(),
+      isPopular: els.dishIsPopular ? els.dishIsPopular.checked : false
     };
 
     try {
@@ -791,6 +808,10 @@
     });
     els.dishCategoryFilter?.addEventListener('change', () => {
       state.categoryFilter = els.dishCategoryFilter.value;
+      renderDishesTable();
+    });
+    els.dishSortFilter?.addEventListener('change', () => {
+      state.sortBy = els.dishSortFilter.value;
       renderDishesTable();
     });
 

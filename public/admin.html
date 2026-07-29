@@ -108,6 +108,14 @@
             <option value="menu-week-end">Menu week-end</option>
             <option value="jus-desserts">Jus & desserts</option>
           </select>
+          <select id="dishSortFilter" class="form-control" style="max-width: 195px;">
+            <option value="newest">🆕 Nouveaux (Récents)</option>
+            <option value="oldest">📜 Anciens en premier</option>
+            <option value="popular">⭐ Populaires / Favoris</option>
+            <option value="price_asc">💲 Prix : Croissant</option>
+            <option value="price_desc">💰 Prix : Décroissant</option>
+            <option value="name">🔤 Nom (A ➔ Z)</option>
+          </select>
         </div>
         <div class="add-dish-btn-wrap">
           <button class="btn btn-primary" id="addDishBtn">➕ Ajouter un Plat</button>
@@ -385,8 +393,15 @@
           </div>
           <div class="form-group">
             <label for="dishSortOrder">Ordre d'affichage</label>
-            <input type="number" id="dishSortOrder" class="form-control" value="1">
+            <input type="number" id="dishSortOrder" class="form-control" value="0">
           </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 0.75rem; background: var(--bg-hover, rgba(255,255,255,0.03)); padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border);">
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-weight: 500;">
+            <input type="checkbox" id="dishIsPopular" style="width: 18px; height: 18px; accent-color: var(--accent);">
+            <span>⭐ Plat Populaire / Coup de Cœur (Affiché en priorité)</span>
+          </label>
         </div>
 
         <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem;">

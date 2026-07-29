@@ -142,7 +142,8 @@ function formatDishRow(row: any) {
     sizes: sizes,
     image: row.image_url,
     available: Boolean(row.available),
-    sortOrder: Number(row.sort_order || 0)
+    sortOrder: Number(row.sort_order || 0),
+    isPopular: Boolean(row.is_popular || row.isPopular)
   };
 }
 
@@ -194,7 +195,7 @@ app.get('/api/menu/version', async (c) => {
 // GET /api/menu (Public Menu Data)
 app.get('/api/menu', async (c) => {
   const { results } = await c.env.DB.prepare(
-    'SELECT * FROM dishes WHERE available = 1 ORDER BY sort_order ASC, id ASC'
+    'SELECT * FROM dishes WHERE available = 1 ORDER BY id DESC'
   ).all();
   
   const menu = (results || []).map(formatDishRow);
@@ -397,7 +398,7 @@ app.post('/api/admin/restore', adminAuthMiddleware, async (c) => {
 // GET /api/admin/dishes (Returns ALL dishes including hidden/sold-out)
 app.get('/api/admin/dishes', adminAuthMiddleware, async (c) => {
   const { results } = await c.env.DB.prepare(
-    'SELECT * FROM dishes ORDER BY sort_order ASC, id ASC'
+    'SELECT * FROM dishes ORDER BY id DESC'
   ).all();
   
   return c.json((results || []).map(formatDishRow));
@@ -406,7 +407,7 @@ app.get('/api/admin/dishes', adminAuthMiddleware, async (c) => {
 // POST /api/admin/dishes (Create new dish)
 app.post('/api/admin/dishes', adminAuthMiddleware, async (c) => {
   const body = await c.req.json().catch(() => ({}));
-  const { category, group, name, nameAr, desc, descAr, price, sizes, image, available, sortOrder } = body;
+  const { category, group, name, nameAr, desc, descAr, price, sizes, image, available, sortOrder, isPopular } = body;
   
   if (!category || !name || price === undefined) {
     return c.json({ error: 'Category, name (French), and base price are required' }, 400);
@@ -415,13 +416,22 @@ app.post('/api/admin/dishes', adminAuthMiddleware, async (c) => {
   const groupName = group || category;
   const sizesJson = sizes && Array.isArray(sizes) && sizes.length ? JSON.stringify(sizes) : null;
   const isAvailable = available === false ? 0 : 1;
-  const order = Number(sortOrder) || 999;
+  const order = Number(sortOrder) || 0;
   const imageUrl = image || 'assets/dish-placeholder.svg';
+  const popularVal = isPopular ? 1 : 0;
   
-  const res = await c.env.DB.prepare(
-    `INSERT INTO dishes (category, group_name, name_fr, name_ar, desc_fr, desc_ar, price, sizes_json, image_url, available, sort_order, updated_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`
-  ).bind(category, groupName, name, nameAr || '', desc || '', descAr || '', Number(price), sizesJson, imageUrl, isAvailable, order).run();
+  let res;
+  try {
+    res = await c.env.DB.prepare(
+      `INSERT INTO dishes (category, group_name, name_fr, name_ar, desc_fr, desc_ar, price, sizes_json, image_url, available, sort_order, is_popular, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`
+    ).bind(category, groupName, name, nameAr || '', desc || '', descAr || '', Number(price), sizesJson, imageUrl, isAvailable, order, popularVal).run();
+  } catch (_) {
+    res = await c.env.DB.prepare(
+      `INSERT INTO dishes (category, group_name, name_fr, name_ar, desc_fr, desc_ar, price, sizes_json, image_url, available, sort_order, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)`
+    ).bind(category, groupName, name, nameAr || '', desc || '', descAr || '', Number(price), sizesJson, imageUrl, isAvailable, order).run();
+  }
   
   const insertedId = res.meta.last_row_id;
   const newDish = await c.env.DB.prepare('SELECT * FROM dishes WHERE id = ?').bind(insertedId).first();
@@ -434,9 +444,9 @@ app.post('/api/admin/dishes', adminAuthMiddleware, async (c) => {
 app.put('/api/admin/dishes/:id', adminAuthMiddleware, async (c) => {
   const id = c.req.param('id');
   const body = await c.req.json().catch(() => ({}));
-  const { category, group, name, nameAr, desc, descAr, price, sizes, image, available, sortOrder } = body;
+  const { category, group, name, nameAr, desc, descAr, price, sizes, image, available, sortOrder, isPopular } = body;
   
-  const existing = await c.env.DB.prepare('SELECT * FROM dishes WHERE id = ?').bind(id).first();
+  const existing: any = await c.env.DB.prepare('SELECT * FROM dishes WHERE id = ?').bind(id).first();
   if (!existing) {
     return c.json({ error: 'Dish not found' }, 404);
   }
@@ -444,26 +454,50 @@ app.put('/api/admin/dishes/:id', adminAuthMiddleware, async (c) => {
   const sizesJson = sizes && Array.isArray(sizes) && sizes.length ? JSON.stringify(sizes) : null;
   const isAvailable = available === false ? 0 : 1;
   const groupName = group || category || existing.group_name;
+  const popularVal = isPopular !== undefined ? (isPopular ? 1 : 0) : (existing.is_popular || 0);
   
-  await c.env.DB.prepare(
-    `UPDATE dishes SET
-      category = ?, group_name = ?, name_fr = ?, name_ar = ?, desc_fr = ?, desc_ar = ?,
-      price = ?, sizes_json = ?, image_url = ?, available = ?, sort_order = ?, updated_at = CURRENT_TIMESTAMP
-     WHERE id = ?`
-  ).bind(
-    category || existing.category,
-    groupName,
-    name || existing.name_fr,
-    nameAr !== undefined ? nameAr : existing.name_ar,
-    desc !== undefined ? desc : existing.desc_fr,
-    descAr !== undefined ? descAr : existing.desc_ar,
-    price !== undefined ? Number(price) : existing.price,
-    sizesJson,
-    image || existing.image_url,
-    isAvailable,
-    sortOrder !== undefined ? Number(sortOrder) : existing.sort_order,
-    id
-  ).run();
+  try {
+    await c.env.DB.prepare(
+      `UPDATE dishes SET
+        category = ?, group_name = ?, name_fr = ?, name_ar = ?, desc_fr = ?, desc_ar = ?,
+        price = ?, sizes_json = ?, image_url = ?, available = ?, sort_order = ?, is_popular = ?, updated_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+    ).bind(
+      category || existing.category,
+      groupName,
+      name || existing.name_fr,
+      nameAr !== undefined ? nameAr : existing.name_ar,
+      desc !== undefined ? desc : existing.desc_fr,
+      descAr !== undefined ? descAr : existing.desc_ar,
+      price !== undefined ? Number(price) : existing.price,
+      sizesJson,
+      image || existing.image_url,
+      isAvailable,
+      sortOrder !== undefined ? Number(sortOrder) : existing.sort_order,
+      popularVal,
+      id
+    ).run();
+  } catch (_) {
+    await c.env.DB.prepare(
+      `UPDATE dishes SET
+        category = ?, group_name = ?, name_fr = ?, name_ar = ?, desc_fr = ?, desc_ar = ?,
+        price = ?, sizes_json = ?, image_url = ?, available = ?, sort_order = ?, updated_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+    ).bind(
+      category || existing.category,
+      groupName,
+      name || existing.name_fr,
+      nameAr !== undefined ? nameAr : existing.name_ar,
+      desc !== undefined ? desc : existing.desc_fr,
+      descAr !== undefined ? descAr : existing.desc_ar,
+      price !== undefined ? Number(price) : existing.price,
+      sizesJson,
+      image || existing.image_url,
+      isAvailable,
+      sortOrder !== undefined ? Number(sortOrder) : existing.sort_order,
+      id
+    ).run();
+  }
   
   const updatedDish = await c.env.DB.prepare('SELECT * FROM dishes WHERE id = ?').bind(id).first();
   await touchDatabaseVersion(c.env.DB);
