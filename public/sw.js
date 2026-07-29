@@ -1,4 +1,4 @@
-const CACHE = 'mr-pasta-pos-v4';
+const CACHE = 'mr-pasta-pos-v5';
 const CORE = [
   './',
   './index.html',
@@ -28,12 +28,14 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) return;
+  // 1. Ignore any non-GET request (POST, PUT, DELETE, PATCH)
+  if (event.request.method !== 'GET') return;
 
-  // API requests: Network ONLY (bypass Service Worker to prevent redirect/auth issues)
-  if (event.request.url.includes('/api/')) {
-    return;
-  }
+  // 2. Ignore all API endpoints
+  if (event.request.url.includes('/api/')) return;
+
+  // 3. Ignore cross-origin requests
+  if (!event.request.url.startsWith(self.location.origin)) return;
 
   // Static assets: Cache First with background revalidation
   event.respondWith(
